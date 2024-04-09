@@ -19,3 +19,6 @@ res://scenes/beat_tracker.gd
 res://todo_list.txt
 res://scenes/instruments.gd
 res://sounds/default_bus_layout.tres
+res://spriteframes/bootsie_spriteframes.tres
+res://scenes/cat_container.tscn
+res://spriteframes/snowball_spriteframes.tres

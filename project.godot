@@ -24,7 +24,7 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 Settings="*res://scripts/settings.gd"
 Coins="*res://scripts/coins.gd"
 Math="*res://scripts/math_functions.gd"
-Global="*res://scripts/global_helpers.gd"
+GlobalHelpers="*res://scripts/global_helpers.gd"
 
 [debug]
 

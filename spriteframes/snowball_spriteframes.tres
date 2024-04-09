@@ -1,23 +1,23 @@
 [gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://c8l02ayvtmc8t"]
 
-[ext_resource type="Texture2D" uid="uid://dupk37c4xx6r6" path="res://images/cats/gandalf/gandalf1.png" id="1_e0k7u"]
-[ext_resource type="Texture2D" uid="uid://dpi4y7byh3v3p" path="res://images/cats/gandalf/gandalf2.png" id="2_8xy6r"]
-[ext_resource type="Texture2D" uid="uid://dggle57g4ifxq" path="res://images/cats/gandalf/gandalf3.png" id="3_bvjxb"]
-[ext_resource type="Texture2D" uid="uid://b75fqhmuvsaq8" path="res://images/cats/gandalf/gandalf4.png" id="4_1r157"]
-[ext_resource type="Texture2D" uid="uid://cwckneiditwpn" path="res://images/cats/gandalf/gandalf5.png" id="5_jj8a5"]
-[ext_resource type="Texture2D" uid="uid://chaa5tb26s1sa" path="res://images/cats/gandalf/gandalf6.png" id="6_xdbsw"]
-[ext_resource type="Texture2D" uid="uid://bq10xwf2b7ion" path="res://images/cats/gandalf/gandalf7.png" id="7_o6sh3"]
-[ext_resource type="Texture2D" uid="uid://brapn2umgr0wo" path="res://images/cats/gandalf/gandalf8.png" id="8_btq6a"]
-[ext_resource type="Texture2D" uid="uid://dpmpw8vjiykr5" path="res://images/cats/gandalf/gandalf9.png" id="9_cjiku"]
+[ext_resource type="Texture2D" uid="uid://d20nr5bdb10bv" path="res://images/cats/snowball/snowball1.png" id="1_mr03t"]
+[ext_resource type="Texture2D" uid="uid://bvsyj1c7ndkhi" path="res://images/cats/snowball/snowball2.png" id="2_ewu1m"]
+[ext_resource type="Texture2D" uid="uid://dlirs0812jbnq" path="res://images/cats/snowball/snowball3.png" id="3_gvg0b"]
+[ext_resource type="Texture2D" uid="uid://ceirm0a8v0n8l" path="res://images/cats/snowball/snowball4.png" id="4_qdnan"]
+[ext_resource type="Texture2D" uid="uid://8iyqdgyrkxu3" path="res://images/cats/snowball/snowball5.png" id="5_18nmk"]
+[ext_resource type="Texture2D" uid="uid://d36ddqd33q45f" path="res://images/cats/snowball/snowball6.png" id="6_eggnc"]
+[ext_resource type="Texture2D" uid="uid://cpx5d0mr3kvye" path="res://images/cats/snowball/snowball7.png" id="7_47s5i"]
+[ext_resource type="Texture2D" uid="uid://34bjtiu4s2d7" path="res://images/cats/snowball/snowball8.png" id="8_3fr54"]
+[ext_resource type="Texture2D" uid="uid://bns52t626xijp" path="res://images/cats/snowball/snowball9.png" id="9_esuv0"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_e0k7u")
+"texture": ExtResource("1_mr03t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_8xy6r")
+"texture": ExtResource("2_ewu1m")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,10 +25,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bvjxb")
+"texture": ExtResource("3_gvg0b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1r157")
+"texture": ExtResource("4_qdnan")
 }],
 "loop": true,
 "name": &"meow",
@@ -36,19 +36,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_jj8a5")
+"texture": ExtResource("5_18nmk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_xdbsw")
+"texture": ExtResource("6_eggnc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_o6sh3")
+"texture": ExtResource("7_47s5i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_btq6a")
+"texture": ExtResource("8_3fr54")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_cjiku")
+"texture": ExtResource("9_esuv0")
 }],
 "loop": true,
 "name": &"walk",

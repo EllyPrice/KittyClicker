@@ -1,9 +1,8 @@
 class_name Cat extends Node2D
 
-@onready var cat_shadow: Sprite2D = %CatShadow
-@onready var cat_anim_sprite: AnimatedSprite2D = %CatAnimSprite
 @onready var emote_label: Label = %EmoteLabel
-@onready var audio_stream_player: AudioStreamPlayer2D = %AudioStreamPlayer
+@onready var anim_sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var shadow: Sprite2D = %Shadow
 
 const CATCOIN = preload("res://scenes/catcoin.tscn")
 var flipped: bool = false
@@ -15,20 +14,27 @@ var spriteframes: SpriteFrames
 
 var sound: AudioStreamWAV
 
-var max_beats: int
 var notes: Array[float]
 var current_beat: int
+var my_beat: int
+var bpm: float
 
-func ready() -> void:
-	cat_anim_sprite.sprite_frames = spriteframes
+func _ready() -> void:
+	anim_sprite.sprite_frames = spriteframes
 
-func _on_beat(beat: int, measures: Array) -> void:
-	if !is_moving:
-		is_moving = true
+func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
+	bpm = wait_time
+	if my_beat not in measures:
+		my_beat = beat
+	if my_beat == beat:
+		_on_my_beat()
 	update()
 
+func _on_my_beat() -> void:
+	emote()
+
 func update() -> void:
-	cat_anim_sprite.flip_h = dir.x < 0.0
+	anim_sprite.flip_h = dir.x < 0.0
 	if is_moving:
 		dir = avoid_boundaries(dir)
 		var new_pos: Vector2 = global_position + dir
@@ -65,10 +71,13 @@ func avoid_boundaries(_dir: Vector2) -> Vector2:
 		_dir.y = 1
 	return _dir
 
-func do_emote() -> void:
+func emote() -> void:
 	var text_emotes = preload("res://scripts/emotes.gd")
 	emote_label.text = text_emotes.amiguito.pick_random()
 	emote_label.show()
+	for i: int in 4:
+		await GlobalHelpers.tree_timer(bpm)
+	emote_label.hide()
 
 func deposit_payout() -> void:
 	var catcoin: Node2D = CATCOIN.instantiate()
