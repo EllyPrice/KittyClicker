@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://sji5528v3neh"]
+
+[ext_resource type="Texture2D" uid="uid://3gt823u4ynhw" path="res://images/cats/salem/salem1.png" id="1_s4es1"]
+[ext_resource type="Texture2D" uid="uid://khgd8qv7ok2d" path="res://images/cats/salem/salem2.png" id="2_ru6bd"]
+[ext_resource type="Texture2D" uid="uid://behj6g4jcs8xl" path="res://images/cats/salem/salem3.png" id="3_agp4c"]
+[ext_resource type="Texture2D" uid="uid://w45k82b81vx8" path="res://images/cats/salem/salem4.png" id="4_wisok"]
+[ext_resource type="Texture2D" uid="uid://di4pet4cyieuv" path="res://images/cats/salem/salem5.png" id="5_xx6ec"]
+[ext_resource type="Texture2D" uid="uid://bpdlx615h7rfy" path="res://images/cats/salem/salem6.png" id="6_riqwb"]
+[ext_resource type="Texture2D" uid="uid://c8u52f7nnxtb2" path="res://images/cats/salem/salem7.png" id="7_n8gdq"]
+[ext_resource type="Texture2D" uid="uid://bvp6ulgxsydw1" path="res://images/cats/salem/salem8.png" id="8_pxgfk"]
+[ext_resource type="Texture2D" uid="uid://cv2rtl8h8c35b" path="res://images/cats/salem/salem9.png" id="9_c30ho"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s4es1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ru6bd")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_agp4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wisok")
+}],
+"loop": false,
+"name": &"meow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xx6ec")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_riqwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_n8gdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pxgfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c30ho")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 5.0
+}]

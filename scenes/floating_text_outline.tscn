@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://defgynt4hl8kn"]
+
+[ext_resource type="Texture2D" uid="uid://bk63m5to0pwm6" path="res://images/ui/cat_adoption_center/adopt1.png" id="1_7xjvj"]
+[ext_resource type="Texture2D" uid="uid://dpgvkh0orhryq" path="res://images/ui/cat_adoption_center/adopt2.png" id="2_fd2fa"]
+[ext_resource type="Texture2D" uid="uid://dmarwphv7rq07" path="res://images/ui/cat_adoption_center/adopt3.png" id="3_fuflg"]
+[ext_resource type="Texture2D" uid="uid://dgcbtgli612ii" path="res://images/ui/cat_adoption_center/adopt4.png" id="4_xmv0w"]
+[ext_resource type="Texture2D" uid="uid://blcqf02m3oeat" path="res://images/ui/cat_adoption_center/adopt5.png" id="5_pswtd"]
+[ext_resource type="Texture2D" uid="uid://cmiugr8t1vrwp" path="res://images/ui/cat_adoption_center/adopt6.png" id="6_vkhfh"]
+[ext_resource type="Texture2D" uid="uid://dhp5q0kmx5u6m" path="res://images/ui/cat_adoption_center/adopt7.png" id="7_s3qr4"]
+[ext_resource type="Texture2D" uid="uid://b3d0uogalfamk" path="res://images/ui/cat_adoption_center/adopt8.png" id="8_qd3g1"]
+[ext_resource type="Texture2D" uid="uid://bbjkjgya5y3jt" path="res://images/ui/cat_adoption_center/adopt9.png" id="9_lo1aa"]
+[ext_resource type="Texture2D" uid="uid://b53epo6eob6f0" path="res://images/ui/cat_adoption_center/adopt10.png" id="10_4t0pm"]
+[ext_resource type="Texture2D" uid="uid://cmcwd7n3py1dk" path="res://images/ui/cat_adoption_center/adopt11.png" id="11_otn8j"]
+[ext_resource type="Texture2D" uid="uid://cqf5b5ju141f7" path="res://images/ui/cat_adoption_center/adopt12.png" id="12_wmalk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5p4mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7xjvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fd2fa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fuflg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xmv0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pswtd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vkhfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s3qr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qd3g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lo1aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4t0pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_otn8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wmalk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FloatingTextOutline" type="Node2D"]
+show_behind_parent = true
+
+[node name="FloatingText2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_5p4mn")
+autoplay = "default"
+
+[node name="FloatingText3" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.5, 1)
+sprite_frames = SubResource("SpriteFrames_5p4mn")
+autoplay = "default"
+
+[node name="FloatingText4" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-0.5, -0.5)
+sprite_frames = SubResource("SpriteFrames_5p4mn")
+autoplay = "default"
+
+[node name="FloatingText5" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0.5, -0.5)
+sprite_frames = SubResource("SpriteFrames_5p4mn")
+autoplay = "default"

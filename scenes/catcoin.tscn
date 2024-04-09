@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq7lvx1x7avly"]
+
+[ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/ui/stackable_catcoin.png" id="1_mq37m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7jdh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mq37m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Coin" type="AnimatedSprite2D"]
+position = Vector2(1.19209e-07, 1.19209e-07)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_i7jdh")

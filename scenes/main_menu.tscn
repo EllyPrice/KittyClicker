@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwc352f3dkopn"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_lr4p2"]
+[ext_resource type="Script" path="res://scripts/performance_settings.gd" id="2_xsca6"]
+[ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://smol_label_setting.tres" id="3_lhtdg"]
+[ext_resource type="Script" path="res://scripts/cheatcodes.gd" id="4_1qxh8"]
+[ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="5_ilaeu"]
+[ext_resource type="Script" path="res://scenes/beat_tracker.gd" id="6_uqyh3"]
+
+[node name="MainMenu" type="TabContainer"]
+custom_minimum_size = Vector2(0, 288)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_lr4p2")
+
+[node name="Performance" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+ratio = 0.8
+script = ExtResource("2_xsca6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Performance"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Performance/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "NUMBER OF CATS PER ROOM"
+label_settings = ExtResource("3_lhtdg")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Performance/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MinCats" type="Label" parent="Performance/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("3_lhtdg")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Performance/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="CurrentCats" type="Label" parent="Performance/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("3_lhtdg")
+horizontal_alignment = 1
+
+[node name="CatsPerRoomSlider" type="HSlider" parent="Performance/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 10.0
+max_value = 1000.0
+step = 10.0
+value = 100.0
+ticks_on_borders = true
+
+[node name="MaxCats" type="Label" parent="Performance/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10000"
+label_settings = ExtResource("3_lhtdg")
+horizontal_alignment = 1
+
+[node name="Cheatcodes" type="AspectRatioContainer" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("4_1qxh8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cheatcodes"]
+layout_mode = 2
+
+[node name="EnterCheatcodeField" type="LineEdit" parent="Cheatcodes/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ilaeu")
+placeholder_text = "enter cheatcode"
+
+[node name="MoneyExploitLabel" type="Label" parent="Cheatcodes/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "give yourself some catcoins"
+label_settings = ExtResource("3_lhtdg")
+
+[node name="MoneyExploitField" type="LineEdit" parent="Cheatcodes/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_ilaeu")
+placeholder_text = "type amount here"
+
+[node name="BeatTracker" type="Timer" parent="."]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.234
+autostart = true
+script = ExtResource("6_uqyh3")
+
+[connection signal="value_changed" from="Performance/VBoxContainer/HBoxContainer/VBoxContainer/CatsPerRoomSlider" to="Performance" method="_on_cats_per_room_slider_value_changed"]
+[connection signal="text_submitted" from="Cheatcodes/VBoxContainer/EnterCheatcodeField" to="Cheatcodes" method="_on_enter_cheatcode_field_text_submitted"]
+[connection signal="text_submitted" from="Cheatcodes/VBoxContainer/MoneyExploitField" to="Cheatcodes" method="_on_money_exploit_field_text_submitted"]
+[connection signal="timeout" from="BeatTracker" to="BeatTracker" method="_on_timeout"]

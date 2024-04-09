@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwkobg4lwotb4"]
+
+[ext_resource type="Script" path="res://scripts/cat.gd" id="1_8nmec"]
+[ext_resource type="Texture2D" uid="uid://bdx7esv74375f" path="res://images/cat_shadow.png" id="2_2gcnm"]
+[ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://smol_label_setting.tres" id="2_t281t"]
+[ext_resource type="SpriteFrames" uid="uid://bm1kk2enljgen" path="res://cat_spriteframes/bob_spriteframes.tres" id="3_glpbh"]
+
+[node name="Cat" type="Node2D" groups=["cats"]]
+y_sort_enabled = true
+script = ExtResource("1_8nmec")
+
+[node name="CatShadow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+texture = ExtResource("2_2gcnm")
+offset = Vector2(0, 8)
+
+[node name="CatAnimSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("3_glpbh")
+animation = &"idle"
+
+[node name="EmoteLabel" type="Label" parent="."]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 5.0
+offset_top = -12.0
+offset_right = 37.0
+offset_bottom = -2.0
+size_flags_horizontal = 0
+text = "meow"
+label_settings = ExtResource("2_t281t")
+vertical_alignment = 2
+uppercase = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

@@ -1,0 +1,142 @@
+[gd_scene load_steps=18 format=3 uid="uid://dnopqvxxedu2a"]
+
+[ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://smol_label_setting.tres" id="1_jd3aj"]
+[ext_resource type="Script" path="res://scripts/big_gato.gd" id="1_pmwri"]
+[ext_resource type="Texture2D" uid="uid://cph6gmmj6y6y4" path="res://images/cats/bob/bob1.png" id="2_wk77v"]
+[ext_resource type="Texture2D" uid="uid://v2qi2umhv3fg" path="res://images/cats/bob/bob2.png" id="3_oxlxr"]
+[ext_resource type="Texture2D" uid="uid://c3hdbjr1e8wvt" path="res://images/cats/bob/bob3.png" id="4_pvgti"]
+[ext_resource type="Texture2D" uid="uid://degosjmuslmwg" path="res://images/cats/bob/bob4.png" id="5_sjfjc"]
+[ext_resource type="Texture2D" uid="uid://4gpwi8ace3qm" path="res://images/cats/bob/bob5.png" id="6_0lq3m"]
+[ext_resource type="Texture2D" uid="uid://b53ic0xdtwy4e" path="res://images/cats/bob/bob6.png" id="7_h5cmq"]
+[ext_resource type="Texture2D" uid="uid://nlrhqw2xbehc" path="res://images/cats/bob/bob7.png" id="8_loqef"]
+[ext_resource type="Texture2D" uid="uid://00ntafa4pqmq" path="res://images/cats/bob/bob8.png" id="9_g33sg"]
+[ext_resource type="Texture2D" uid="uid://d1bul6j65o7l4" path="res://images/cats/bob/bob9.png" id="10_mfqro"]
+[ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="12_pxhx0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00y4o"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_oejhs"]
+action = &"pet"
+
+[sub_resource type="Shortcut" id="Shortcut_6p6sk"]
+events = [SubResource("InputEventAction_oejhs")]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edmbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wk77v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oxlxr")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pvgti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sjfjc")
+}],
+"loop": false,
+"name": &"meow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0lq3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h5cmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_loqef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g33sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mfqro")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbrax"]
+font = ExtResource("12_pxhx0")
+font_size = 8
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="BigGato" type="MarginContainer" groups=["cats"]]
+custom_minimum_size = Vector2(160, 160)
+size_flags_horizontal = 8
+script = ExtResource("1_pmwri")
+
+[node name="PetTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="SleepTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="HideEmoteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="PetKittyButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_00y4o")
+action_mode = 0
+shortcut = SubResource("Shortcut_6p6sk")
+flat = true
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_edmbm")
+animation = &"idle"
+offset = Vector2(8, 8)
+
+[node name="EmoteLabel" type="Label" parent="AnimSprite"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.538
+anchor_top = -0.211
+anchor_right = 0.538
+anchor_bottom = -0.211
+offset_left = -1.608
+offset_top = -0.323999
+offset_right = 30.392
+offset_bottom = 9.676
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "meow"
+label_settings = ExtResource("1_jd3aj")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PetLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+z_as_relative = false
+layout_mode = 2
+text = "pet big gato"
+label_settings = SubResource("LabelSettings_xbrax")
+horizontal_alignment = 1
+
+[node name="NyaaKittySound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="PetTimer" to="." method="_on_pet_timer_timeout"]
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
+[connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]
+[connection signal="mouse_entered" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_entered"]
+[connection signal="mouse_exited" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_exited"]
+[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]
+[connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]

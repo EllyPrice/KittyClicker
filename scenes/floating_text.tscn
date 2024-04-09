@@ -1,0 +1,68 @@
+[gd_scene load_steps=15 format=3 uid="uid://pwngge8ttviq"]
+
+[ext_resource type="Texture2D" uid="uid://bk63m5to0pwm6" path="res://images/ui/cat_adoption_center/adopt1.png" id="1_04phw"]
+[ext_resource type="Texture2D" uid="uid://dpgvkh0orhryq" path="res://images/ui/cat_adoption_center/adopt2.png" id="2_rauvu"]
+[ext_resource type="Texture2D" uid="uid://dmarwphv7rq07" path="res://images/ui/cat_adoption_center/adopt3.png" id="3_yejsa"]
+[ext_resource type="Texture2D" uid="uid://dgcbtgli612ii" path="res://images/ui/cat_adoption_center/adopt4.png" id="4_4yn6l"]
+[ext_resource type="Texture2D" uid="uid://blcqf02m3oeat" path="res://images/ui/cat_adoption_center/adopt5.png" id="5_35y77"]
+[ext_resource type="Texture2D" uid="uid://cmiugr8t1vrwp" path="res://images/ui/cat_adoption_center/adopt6.png" id="6_evc4c"]
+[ext_resource type="Texture2D" uid="uid://dhp5q0kmx5u6m" path="res://images/ui/cat_adoption_center/adopt7.png" id="7_8q0oj"]
+[ext_resource type="Texture2D" uid="uid://b3d0uogalfamk" path="res://images/ui/cat_adoption_center/adopt8.png" id="8_emq6p"]
+[ext_resource type="Texture2D" uid="uid://bbjkjgya5y3jt" path="res://images/ui/cat_adoption_center/adopt9.png" id="9_1q2no"]
+[ext_resource type="Texture2D" uid="uid://b53epo6eob6f0" path="res://images/ui/cat_adoption_center/adopt10.png" id="10_fgfho"]
+[ext_resource type="Texture2D" uid="uid://cmcwd7n3py1dk" path="res://images/ui/cat_adoption_center/adopt11.png" id="11_lf02c"]
+[ext_resource type="Texture2D" uid="uid://cqf5b5ju141f7" path="res://images/ui/cat_adoption_center/adopt12.png" id="12_mjmw6"]
+[ext_resource type="PackedScene" uid="uid://defgynt4hl8kn" path="res://scenes/floating_text_outline.tscn" id="13_7jdds"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5p4mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_04phw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rauvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yejsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4yn6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_35y77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_evc4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8q0oj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_emq6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1q2no")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fgfho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lf02c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mjmw6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FloatingText" type="AnimatedSprite2D"]
+z_index = 1
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5p4mn")
+autoplay = "default"
+
+[node name="FloatingTextOutline" parent="." instance=ExtResource("13_7jdds")]
