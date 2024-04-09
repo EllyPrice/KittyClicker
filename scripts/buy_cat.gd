@@ -11,7 +11,7 @@ signal pressed(cat: Cat)
 @export var spriteframes: SpriteFrames
 
 @export_category("Sound")
-@export var sound: AudioStreamWAV = preload("res://sounds/cute_anime_nya.wav")
+@export var sound: AudioStreamWAV = preload("uid://dbbrg27db5sl3")
 
 @export_group("Notes")
 @export var unison: bool

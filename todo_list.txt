@@ -1,8 +1,10 @@
-1:
-	Make cats that meow on the same beat do something more interesting than just doubling the volume
-	Also, don't make them double the volume
-2:
-	Reorganize code so that its more readable
-	Figure out the best system for doing that, actually
-3:
-	probably just rewrite the entirety of the cat/big cat script :(
+
+Make cats that meow on the same beat do something more interesting than just doubling the volume
+Also, don't make them double the volume
+
+Reorganize code so that its more readable
+Figure out the best system for doing that, actually
+
+probably just rewrite the entirety of the cat/big cat script :(
+
+make a set of global audio players that only play a certain amount of notes at a time

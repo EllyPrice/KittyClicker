@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/cat.gd" id="1_8nmec"]
 [ext_resource type="Texture2D" uid="uid://bdx7esv74375f" path="res://images/cat_shadow.png" id="2_2gcnm"]
 [ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://themes/smol_label_setting.tres" id="2_t281t"]
-[ext_resource type="SpriteFrames" uid="uid://bm1kk2enljgen" path="res://cat_spriteframes/bob_spriteframes.tres" id="3_glpbh"]
+[ext_resource type="SpriteFrames" uid="uid://bm1kk2enljgen" path="res://spriteframes/bob_spriteframes.tres" id="3_glpbh"]
 
 [node name="Cat" type="Node2D" groups=["cats"]]
 y_sort_enabled = true
