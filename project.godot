@@ -25,6 +25,7 @@ Settings="*res://scripts/settings.gd"
 Coins="*res://scripts/coins.gd"
 Math="*res://scripts/math_functions.gd"
 GlobalHelpers="*res://scripts/global_helpers.gd"
+CatData="*res://scripts/cat_data.gd"
 
 [debug]
 
@@ -50,10 +51,6 @@ window/per_pixel_transparency/allowed=true
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [file_customization]
 

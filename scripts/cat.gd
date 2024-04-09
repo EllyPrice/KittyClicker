@@ -1,8 +1,9 @@
 class_name Cat extends Node2D
 
-@onready var emote_label: Label = %EmoteLabel
-@onready var anim_sprite: AnimatedSprite2D = %AnimatedSprite2D
-@onready var shadow: Sprite2D = %Shadow
+@onready var emote_label: Label = $EmoteLabel
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shadow: Sprite2D = $Shadow
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const CATCOIN = preload("res://scenes/catcoin.tscn")
 var flipped: bool = false
@@ -12,12 +13,14 @@ var is_moving: bool = false
 var payout: float = 1
 var spriteframes: SpriteFrames
 
-var sound: AudioStreamWAV
-
-var notes: Array[float]
+var instrument: StringName
+var notes: Array[bool]
 var current_beat: int
 var my_beat: int
 var bpm: float
+var is_kick: bool
+var is_snare: bool
+var registered: bool
 
 func _ready() -> void:
 	anim_sprite.sprite_frames = spriteframes
@@ -25,13 +28,33 @@ func _ready() -> void:
 func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
 	bpm = wait_time
 	if my_beat not in measures:
-		my_beat = beat
+		if is_kick:
+			my_beat = snapped(beat, 4)
+		if is_snare:
+			my_beat = snapped(beat, 4) + 2
+		else:
+			my_beat = beat
+	if !registered:
+		get_tree().call_group(instrument, "_on_feline_registered", my_beat)
+		registered = true
 	if my_beat == beat:
 		_on_my_beat()
 	update()
 
 func _on_my_beat() -> void:
+	pick_random_direction()
 	emote()
+	deposit_payout()
+	is_moving = !is_moving
+	animate()
+
+func animate() -> void:
+	if is_moving:
+		anim_sprite.play("walk")
+	else:
+		anim_sprite.play("meow")
+		await GlobalHelpers.tree_timer(bpm)
+		anim_sprite.play("idle")
 
 func update() -> void:
 	anim_sprite.flip_h = dir.x < 0.0
@@ -75,9 +98,12 @@ func emote() -> void:
 	var text_emotes = preload("res://scripts/emotes.gd")
 	emote_label.text = text_emotes.amiguito.pick_random()
 	emote_label.show()
-	for i: int in 4:
-		await GlobalHelpers.tree_timer(bpm)
+	play_sound()
+	await GlobalHelpers.tree_timer(bpm)
 	emote_label.hide()
+
+func play_sound() -> void:
+	get_tree().call_group(instrument, "_on_note_played", notes)
 
 func deposit_payout() -> void:
 	var catcoin: Node2D = CATCOIN.instantiate()

@@ -19,9 +19,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_o8rm0")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.52
 }, {
 "frames": [{
 "duration": 1.0,
@@ -30,9 +30,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_0wnr6")
 }],
-"loop": true,
+"loop": false,
 "name": &"meow",
-"speed": 5.0
+"speed": 8.52
 }, {
 "frames": [{
 "duration": 1.0,
@@ -52,5 +52,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 8.52
 }]

@@ -26,13 +26,18 @@ func pet_kitty() -> void:
 		await get_tree().process_frame
 	anim_sprite.global_position = anim_sprite_base_pos
 
-	if (count % 8) == 0:
+	if (count % 4) == 0:
 		_do_emote()
 
+var switch_note: bool = false
 func _do_emote() -> void:
 	var text_emotes = preload("res://scripts/emotes.gd")
 	emote_label.text = text_emotes.amiguito.pick_random()
 	emote_label.show()
+	nyaa_kitty_sound.pitch_scale = 2 ** (-12.0 / 12.0)
+	switch_note = !switch_note
+	nyaa_kitty_sound.play()
+	flip_sprite()
 	hide_emote_timer.start(2)
 
 func flip_sprite() -> void:
@@ -69,15 +74,6 @@ func _on_pet_kitty_button_mouse_exited() -> void:
 func _on_hide_emote_timer_timeout() -> void:
 	emote_label.text = ""
 
-func play_nyaa() -> void:
-	var notes: Array = [
-		1.0,
-	]
-	#nyaa_kitty_sound.stream = load(nyaa_sounds.pick_random())
-	nyaa_kitty_sound.stream = load("res://sounds/cute_anime_nya.wav")
-	nyaa_kitty_sound.volume_db = -12.0
-	nyaa_kitty_sound.pitch_scale = notes.pick_random()
-	nyaa_kitty_sound.play()
 
 func track_beat(_beat: int) -> void:
 	beat = _beat

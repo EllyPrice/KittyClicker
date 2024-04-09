@@ -11,7 +11,9 @@ signal pressed(cat: Cat)
 @export var spriteframes: SpriteFrames
 
 @export_category("Sound")
-@export var sound: AudioStreamWAV = preload("uid://dbbrg27db5sl3")
+@export var instrument: StringName = "Nyaa"
+@export var is_kick: bool
+@export var is_snare: bool
 
 @export_group("Notes")
 @export var unison: bool
@@ -23,7 +25,6 @@ signal pressed(cat: Cat)
 @export var tritone: bool
 @export var perfect_fifth: bool
 @export var major_sixth: bool
-@export var augmented_sixth: bool
 @export var minor_seventh: bool
 @export var major_seventh: bool
 @export var octave: bool
@@ -65,38 +66,32 @@ func set_cost_label() -> void:
 
 func buy_cat() -> void:
 	if (Coins.amount - cost) >= 0:
-		var notes: Array[float] = [
-		float(unison) * root_of_two(0.0),
-		float(minor_second) * root_of_two(1.0),
-		float(major_second) * root_of_two(2.0),
-		float(minor_third) * root_of_two(3.0),
-		float(major_third) * root_of_two(4.0),
-		float(perfect_fourth) * root_of_two(5.0),
-		float(tritone) * root_of_two(6.0),
-		float(perfect_fifth) * root_of_two(7.0),
-		float(major_sixth) * root_of_two(9.0),
-		float(minor_seventh) * root_of_two(10.0),
-		float(major_seventh) * root_of_two(11.0),
-		float(octave) * root_of_two(12.0),
-		]
-		var used_notes: Array[float]
-		for i in notes.size():
-			if notes[i] >= 1:
-				used_notes.append(notes[i])
-
 		Coins.withdraw(cost)
 		cost *= 1.15
 		set_cost_label()
-		make_cat(used_notes)
+		make_cat()
 
-func root_of_two(n: float) -> float:
-	return 2 ** (n / 12.0)
-
-func make_cat(notes: Array[float]) -> void:
+func make_cat() -> void:
+	var notes: Array[bool] = [
+		unison,
+		minor_second,
+		major_second,
+		minor_third,
+		major_third,
+		perfect_fourth,
+		tritone,
+		perfect_fifth,
+		major_sixth,
+		minor_seventh,
+		major_seventh,
+		octave,
+	]
 	var cat: Cat = CAT.instantiate()
 	cat.payout = payout
-	cat.sound = sound
+	cat.instrument = instrument
 	cat.notes = notes
+	cat.is_kick = is_kick
+	cat.is_snare = is_snare
 	cat.spriteframes = spriteframes
 	pressed.emit(cat)
 	print(notes)

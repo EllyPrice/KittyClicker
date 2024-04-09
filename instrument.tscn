@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxyajxksv2suf"]
+
+[ext_resource type="Script" path="res://scenes/instrument.gd" id="1_80i7n"]
+[ext_resource type="AudioStream" uid="uid://dbbrg27db5sl3" path="res://sounds/cute_anime_nyaa.wav" id="2_4h4on"]
+
+[node name="Instrument" type="Node"]
+script = ExtResource("1_80i7n")
+stream = ExtResource("2_4h4on")
+
+[node name="Unison" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+max_polyphony = 4
+
+[node name="MinorSecond" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.06
+max_polyphony = 4
+
+[node name="MajorSecond" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.12
+max_polyphony = 4
+
+[node name="MinorThird" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.19
+max_polyphony = 4
+
+[node name="MajorThird" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.26
+max_polyphony = 4
+
+[node name="PerfectFourth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+max_polyphony = 4
+
+[node name="Tritone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.41
+max_polyphony = 4
+
+[node name="PerfectFifth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+max_polyphony = 4
+
+[node name="MajorSixth" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.68
+max_polyphony = 4
+
+[node name="MinorSeventh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 1.78
+max_polyphony = 4
+
+[node name="MajorSeventh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+max_polyphony = 4
+
+[node name="Octave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4h4on")
+pitch_scale = 2.0
+max_polyphony = 4

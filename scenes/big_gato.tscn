@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dnopqvxxedu2a"]
+[gd_scene load_steps=19 format=3 uid="uid://dnopqvxxedu2a"]
 
 [ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://themes/smol_label_setting.tres" id="1_jd3aj"]
 [ext_resource type="Script" path="res://scripts/big_gato.gd" id="1_pmwri"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://00ntafa4pqmq" path="res://images/cats/bob/bob8.png" id="9_g33sg"]
 [ext_resource type="Texture2D" uid="uid://d1bul6j65o7l4" path="res://images/cats/bob/bob9.png" id="10_mfqro"]
 [ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="12_pxhx0"]
+[ext_resource type="AudioStream" uid="uid://dbbrg27db5sl3" path="res://sounds/cute_anime_nyaa.wav" id="13_nxwsa"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00y4o"]
 
@@ -132,11 +133,13 @@ horizontal_alignment = 1
 
 [node name="NyaaKittySound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+stream = ExtResource("13_nxwsa")
+pitch_scale = 0.5
 
 [connection signal="timeout" from="PetTimer" to="." method="_on_pet_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
 [connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]
 [connection signal="mouse_entered" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_entered"]
 [connection signal="mouse_exited" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_exited"]
-[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]
 [connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]

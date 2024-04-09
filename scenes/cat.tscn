@@ -10,18 +10,15 @@ y_sort_enabled = true
 script = ExtResource("1_8nmec")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(0, -6)
 texture = ExtResource("2_2gcnm")
 offset = Vector2(0, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
 sprite_frames = ExtResource("3_ig1vn")
-animation = &"idle"
+animation = &"meow"
 
 [node name="EmoteLabel" type="Label" parent="."]
-unique_name_in_owner = true
 z_index = 1
 offset_left = 5.0
 offset_top = -12.0
@@ -32,3 +29,5 @@ text = "meow"
 label_settings = ExtResource("4_33dsf")
 vertical_alignment = 2
 uppercase = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
