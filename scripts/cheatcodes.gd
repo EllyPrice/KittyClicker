@@ -9,9 +9,6 @@ func _on_money_exploit_field_text_submitted(new_text: String) -> void:
 		Coins.amount += new_text.to_float()
 	money_exploit_field.clear()
 
-
-
-
 func _on_enter_cheatcode_field_text_submitted(new_text: String) -> void:
 	if new_text == "swag":
 		money_exploit_field.show()

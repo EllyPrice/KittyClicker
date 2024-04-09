@@ -1,5 +1,7 @@
 class_name CatContainer extends Container
 
+signal pressed(cat: Cat)
+
 @export_category("Catcoins")
 @export var cost: float = 15
 @export var payout: float = 1
@@ -12,13 +14,19 @@ class_name CatContainer extends Container
 @export var sound: AudioStreamWAV = preload("res://sounds/cute_anime_nya.wav")
 
 @export_group("Notes")
-@export var root: bool
-@export var octave: bool
-@export var major_sixth: bool
-@export var perfect_fifth: bool
-@export var perfect_fourth: bool
-@export var major_third: bool
+@export var unison: bool
+@export var minor_second: bool
+@export var major_second: bool
 @export var minor_third: bool
+@export var major_third: bool
+@export var perfect_fourth: bool
+@export var tritone: bool
+@export var perfect_fifth: bool
+@export var major_sixth: bool
+@export var augmented_sixth: bool
+@export var minor_seventh: bool
+@export var major_seventh: bool
+@export var octave: bool
 
 @onready var adopt_button: TextureButton = %AdoptButton
 @onready var floating_text: AnimatedSprite2D = %FloatingText
@@ -27,10 +35,7 @@ class_name CatContainer extends Container
 
 const CAT: PackedScene = preload("uid://dwkobg4lwotb4")
 
-var notes: Dictionary
 var unlocked: bool = false
-
-signal pressed(cat: Cat)
 
 func _ready() -> void:
 	adopt_button.texture_normal = cat_sprite
@@ -60,52 +65,39 @@ func set_cost_label() -> void:
 
 func buy_cat() -> void:
 	if (Coins.amount - cost) >= 0:
-		notes = {
-			"root": root,
-			"octave": octave,
-			"major_sixth": major_sixth,
-			"perfect_fifth": perfect_fifth,
-			"perfect_fourth": perfect_fourth,
-			"major_third": major_third,
-			"minor_third": minor_third,
-		}
+		var notes: Array[float] = [
+		float(unison) * root_of_two(0.0),
+		float(minor_second) * root_of_two(1.0),
+		float(major_second) * root_of_two(2.0),
+		float(minor_third) * root_of_two(3.0),
+		float(major_third) * root_of_two(4.0),
+		float(perfect_fourth) * root_of_two(5.0),
+		float(tritone) * root_of_two(6.0),
+		float(perfect_fifth) * root_of_two(7.0),
+		float(major_sixth) * root_of_two(9.0),
+		float(minor_seventh) * root_of_two(10.0),
+		float(major_seventh) * root_of_two(11.0),
+		float(octave) * root_of_two(12.0),
+		]
+		var used_notes: Array[float]
+		for i in notes.size():
+			if notes[i] >= 1:
+				used_notes.append(notes[i])
+
 		Coins.withdraw(cost)
 		cost *= 1.15
 		set_cost_label()
-		make_cat()
+		make_cat(used_notes)
 
-func make_cat() -> void:
-		var cat: Cat = CAT.instantiate()
-		cat.notes = notes
-		cat.payout = payout
-		cat.sound = sound
-		cat.spriteframes = spriteframes
-		pressed.emit(cat)
+func root_of_two(n: float) -> float:
+	return 2 ** (n / 12.0)
 
-func get_used_node_intervals(used_note_intervals: Array) -> Array[float]:
-	var note_intervals: Array[float] = [
-		1.0/1.0, # Root 1:1
-		2.0/2.0, # Octave 2:1
-		5.0/3.0, # Major Sixth 5:3
-		3.0/2.0, # Perfect Fifth 3:2
-		4.0/3.0, # Perfect Fourth 4:3
-		5.0/4.0, # Major Third 5:4
-		6.0/5.0, # Minor Third 6:5
-	]
+func make_cat(notes: Array[float]) -> void:
+	var cat: Cat = CAT.instantiate()
+	cat.payout = payout
+	cat.sound = sound
+	cat.notes = notes
+	cat.spriteframes = spriteframes
+	pressed.emit(cat)
+	print(notes)
 
-	if notes["root"] == true:
-		used_note_intervals.push_back(note_intervals[0])
-	if notes["octave"] == true:
-		used_note_intervals.push_back(note_intervals[1])
-	if notes["major_sixth"] == true:
-		used_note_intervals.push_back(note_intervals[2])
-	if notes["perfect_fifth"] == true:
-		used_note_intervals.push_back(note_intervals[3])
-	if notes["perfect_fourth"] == true:
-		used_note_intervals.push_back(note_intervals[4])
-	if notes["major_third"] == true:
-		used_note_intervals.push_back(note_intervals[5])
-	if notes["minor_third"] == true:
-		used_note_intervals.push_back(note_intervals[6])
-
-	return used_note_intervals

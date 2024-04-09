@@ -3,7 +3,6 @@ class_name Cat extends Node2D
 @onready var cat_shadow: Sprite2D = %CatShadow
 @onready var cat_anim_sprite: AnimatedSprite2D = %CatAnimSprite
 @onready var emote_label: Label = %EmoteLabel
-@onready var sound_player: AudioStreamPlayer2D = %SoundPlayer
 @onready var audio_stream_player: AudioStreamPlayer2D = %AudioStreamPlayer
 
 const CATCOIN = preload("res://scenes/catcoin.tscn")
@@ -17,18 +16,29 @@ var spriteframes: SpriteFrames
 var sound: AudioStreamWAV
 
 var max_beats: int
+var notes: Array[float]
 var current_beat: int
 
 func ready() -> void:
 	cat_anim_sprite.sprite_frames = spriteframes
 
 func _on_beat(beat: int, measures: Array) -> void:
-	move()
+	if !is_moving:
+		is_moving = true
+	update()
 
-func do_emote() -> void:
-	var text_emotes = preload("res://scripts/emotes.gd")
-	emote_label.text = text_emotes.amiguito.pick_random()
-	emote_label.show()
+func update() -> void:
+	cat_anim_sprite.flip_h = dir.x < 0.0
+	if is_moving:
+		dir = avoid_boundaries(dir)
+		var new_pos: Vector2 = global_position + dir
+		var new_pos_x: float = new_pos.x
+		var new_pos_y: float = new_pos.y
+
+		new_pos.x = snappedi(new_pos_x, 1)
+		new_pos.y = snappedi(new_pos_y, 1)
+
+		global_position = new_pos
 
 func pick_random_direction() -> void:
 	match Math.randmod(8):
@@ -55,33 +65,24 @@ func avoid_boundaries(_dir: Vector2) -> Vector2:
 		_dir.y = 1
 	return _dir
 
-func move() -> void:
-	cat_anim_sprite.flip_h = dir.x < 0.0
-	if is_moving:
-		dir = avoid_boundaries(dir)
-		var new_pos: Vector2 = global_position + dir
-
-		var new_pos_x: float = new_pos.x
-		var new_pos_y: float = new_pos.y
-
-		new_pos.x = snappedi(new_pos_x, 1)
-		new_pos.y = snappedi(new_pos_y, 1)
-
-		global_position = new_pos
+func do_emote() -> void:
+	var text_emotes = preload("res://scripts/emotes.gd")
+	emote_label.text = text_emotes.amiguito.pick_random()
+	emote_label.show()
 
 func deposit_payout() -> void:
 	var catcoin: Node2D = CATCOIN.instantiate()
-	add_child(catcoin)
 	var tween: Tween = get_tree().create_tween()
+
+	add_child(catcoin)
 	tween.tween_property(catcoin, "global_position", catcoin.global_position + Vector2(0, -16), 0.5)
 	tween.tween_callback(delete_coin.bind(catcoin))
+
 	Coins.deposit(payout)
 
 func delete_coin(catcoin: Node) -> void:
 	catcoin.queue_free()
 	emote_label.hide()
 
-func play_sound() -> void:
-	audio_stream_player.volume_db = -24.0
-	audio_stream_player.stream = sound
-	audio_stream_player.play()
+func _on_bar() -> void:
+	pass

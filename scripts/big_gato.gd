@@ -50,7 +50,6 @@ func flip_sprite() -> void:
 
 func _on_pet_timer_timeout() -> void:
 	if pet_kitty_button.button_pressed or Input.is_action_pressed("pet"):
-		#Coins.deposit(1)
 		pet_kitty()
 		sleep_timer.start(1.0)
 		pet_timer.start(0.468)

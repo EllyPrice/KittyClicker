@@ -15,12 +15,16 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
+
 [autoload]
 
 Settings="*res://scripts/settings.gd"
 Coins="*res://scripts/coins.gd"
 Math="*res://scripts/math_functions.gd"
-GlobalHelpers="*res://scripts/global_helpers.gd"
+Global="*res://scripts/global_helpers.gd"
 
 [debug]
 
@@ -85,5 +89,6 @@ pet={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
