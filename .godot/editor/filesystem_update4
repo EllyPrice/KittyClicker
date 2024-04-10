@@ -1,10 +1,2 @@
 res://scenes/main.tscn
 res://themes/smol_label_setting.tres
-res://scenes/cat.tscn
-res://instrument.tscn
-res://scenes/big_gato.tscn
-res://scripts/cat.gd
-res://scripts/buy_cat.gd
-res://scenes/instrument.gd
-res://scripts/coins.gd
-res://scripts/cat_data.gd

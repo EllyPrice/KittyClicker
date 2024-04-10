@@ -20,6 +20,10 @@ var kick = preload("res://sounds/mc2.wav")
 var snare = preload("res://sounds/mc1.wav")
 
 var cats_per_beat: Array[int]
+var beat: int
+func _process(delta: float) -> void:
+	print(cats_per_beat)
+	print(beat)
 
 func _ready() -> void:
 	cats_per_beat.resize(32)
@@ -30,21 +34,20 @@ func _ready() -> void:
 		child.volume_db = -12
 		child.stream = stream
 		note += 1
-
-func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
-	if is_drum:
-		for child: AudioStreamPlayer in get_children():
+		if is_drum:
 			child.max_polyphony = 1
 			child.volume_db = -6
-		unison.stream = kick
-		unison.pitch_scale = 2**(-6.0/12.0)
-		unison.volume_db = -6
-		minor_second.stream = snare
-		minor_second.volume_db = -18
+			unison.stream = kick
+			unison.pitch_scale = 2**(-6.0/12.0)
+			unison.volume_db = -6
+			minor_second.stream = snare
+			minor_second.volume_db = -18
+
+func _on_beat(_beat: int, measures: Array, wait_time: float) -> void:
+	beat = _beat
 
 func _on_feline_registered(cat_beat: int) -> void:
 	cats_per_beat[cat_beat] += 1
-	print(cats_per_beat)
 
 func root_of_two(n: float) -> float:
 	return 2 ** (n / 12.0)
