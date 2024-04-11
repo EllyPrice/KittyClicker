@@ -12,8 +12,6 @@ signal pressed(cat: Cat)
 
 @export_category("Sound")
 @export var instrument: StringName = "Nyaa"
-@export var is_kick: bool
-@export var is_snare: bool
 
 @export_group("Notes")
 @export var unison: bool
@@ -86,12 +84,14 @@ func make_cat() -> void:
 		major_seventh,
 		octave,
 	]
+	var note: int
+	for n: int in notes.size():
+		if notes[n] == true:
+			note = n
 	var cat: Cat = CAT.instantiate()
 	cat.payout = payout
 	cat.instrument = instrument
-	cat.notes = notes
-	cat.is_kick = is_kick
-	cat.is_snare = is_snare
+	cat.note = note
 	cat.spriteframes = spriteframes
 	pressed.emit(cat)
 	print(notes)

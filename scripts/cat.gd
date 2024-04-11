@@ -14,12 +14,9 @@ var payout: float = 1
 var spriteframes: SpriteFrames
 
 var instrument: StringName
-var notes: Array[bool]
-var current_beat: int
+var note: int
 var my_beat: int
 var bpm: float
-var is_kick: bool
-var is_snare: bool
 var registered: bool
 
 func _ready() -> void:
@@ -28,15 +25,10 @@ func _ready() -> void:
 func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
 	bpm = wait_time
 	if my_beat not in measures:
-		if is_kick:
-			my_beat = snapped(beat, 4)
-		if is_snare:
-			my_beat = snapped(beat, 4) + 2
-		else:
-			my_beat = beat
-	if !registered:
-		get_tree().call_group(instrument, "_on_feline_registered", my_beat)
-		registered = true
+		my_beat = beat
+		if !registered:
+			get_tree().call_group(instrument, "_on_cat_registered", beat, note)
+			registered = true
 	if my_beat == beat:
 		_on_my_beat()
 	update()
@@ -49,25 +41,29 @@ func _on_my_beat() -> void:
 	animate()
 
 func animate() -> void:
+	anim_sprite.stop()
+	anim_sprite.animation = "meow"
+	anim_sprite.frame = 0
+	await Helpers.tree_timer(bpm*2)
 	if is_moving:
 		anim_sprite.play("walk")
 	else:
-		anim_sprite.play("meow")
-		await GlobalHelpers.tree_timer(bpm)
 		anim_sprite.play("idle")
 
 func update() -> void:
 	anim_sprite.flip_h = dir.x < 0.0
 	if is_moving:
-		dir = avoid_boundaries(dir)
-		var new_pos: Vector2 = global_position + dir
-		var new_pos_x: float = new_pos.x
-		var new_pos_y: float = new_pos.y
+		for i: int in 2:
+			dir = avoid_boundaries(dir)
+			var new_pos: Vector2 = global_position + dir
+			var new_pos_x: float = new_pos.x
+			var new_pos_y: float = new_pos.y
 
-		new_pos.x = snappedi(new_pos_x, 1)
-		new_pos.y = snappedi(new_pos_y, 1)
+			new_pos.x = snappedi(new_pos_x, 1)
+			new_pos.y = snappedi(new_pos_y, 1)
 
-		global_position = new_pos
+			global_position = new_pos
+			await Helpers.tree_timer(bpm)
 
 func pick_random_direction() -> void:
 	match Math.randmod(8):
@@ -98,12 +94,8 @@ func emote() -> void:
 	var text_emotes = preload("res://scripts/emotes.gd")
 	emote_label.text = text_emotes.amiguito.pick_random()
 	emote_label.show()
-	play_sound()
-	await GlobalHelpers.tree_timer(bpm)
+	await Helpers.tree_timer(bpm*4)
 	emote_label.hide()
-
-func play_sound() -> void:
-	get_tree().call_group(instrument, "_on_note_played", notes)
 
 func deposit_payout() -> void:
 	var catcoin: Node2D = CATCOIN.instantiate()

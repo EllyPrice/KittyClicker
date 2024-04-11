@@ -1,64 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxyajxksv2suf"]
+[gd_scene load_steps=11 format=3 uid="uid://cxyajxksv2suf"]
 
 [ext_resource type="Script" path="res://scenes/instrument.gd" id="1_80i7n"]
 [ext_resource type="AudioStream" uid="uid://dbbrg27db5sl3" path="res://sounds/cute_anime_nyaa.wav" id="2_4h4on"]
+[ext_resource type="AudioStream" uid="uid://prcg27txatbj" path="res://sounds/nyaa_instrument/nyaa1.wav" id="2_toarc"]
+[ext_resource type="AudioStream" uid="uid://cqd1dy5nmaci7" path="res://sounds/nyaa_instrument/nyaa2.wav" id="3_7cq5s"]
+[ext_resource type="AudioStream" uid="uid://c3lntc2ntvihx" path="res://sounds/nyaa_instrument/nyaa3.wav" id="4_cv6gb"]
+[ext_resource type="AudioStream" uid="uid://bjd0aiqn1nkqg" path="res://sounds/nyaa_instrument/nyaa4.wav" id="5_erfxb"]
+[ext_resource type="AudioStream" uid="uid://b483aqbwmt8vt" path="res://sounds/nyaa_instrument/nyaa5.wav" id="6_pwqp7"]
+[ext_resource type="AudioStream" uid="uid://b4yd0141pxp1b" path="res://sounds/nyaa_instrument/nyaa6.wav" id="7_84a38"]
+[ext_resource type="AudioStream" uid="uid://cnsd3aletj07r" path="res://sounds/nyaa_instrument/nyaa7.wav" id="8_h0plg"]
+[ext_resource type="Script" path="res://note.gd" id="10_xqkxu"]
 
 [node name="Instrument" type="Node"]
 script = ExtResource("1_80i7n")
-stream = ExtResource("2_4h4on")
+stream_1 = ExtResource("2_toarc")
+stream_2 = ExtResource("3_7cq5s")
+stream_3 = ExtResource("4_cv6gb")
+stream_4 = ExtResource("5_erfxb")
+stream_5 = ExtResource("6_pwqp7")
+stream_6 = ExtResource("7_84a38")
+stream_7 = ExtResource("8_h0plg")
 
-[node name="Unison" type="AudioStreamPlayer" parent="."]
+[node name="Unison" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MinorSecond" type="AudioStreamPlayer" parent="."]
+[node name="MinorSecond" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.06
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MajorSecond" type="AudioStreamPlayer" parent="."]
+[node name="MajorSecond" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.12
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MinorThird" type="AudioStreamPlayer" parent="."]
+[node name="MinorThird" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.19
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MajorThird" type="AudioStreamPlayer" parent="."]
+[node name="MajorThird" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.26
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="PerfectFourth" type="AudioStreamPlayer" parent="."]
+[node name="PerfectFourth" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="Tritone" type="AudioStreamPlayer" parent="."]
+[node name="Tritone" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.41
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="PerfectFifth" type="AudioStreamPlayer" parent="."]
+[node name="PerfectFifth" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MajorSixth" type="AudioStreamPlayer" parent="."]
+[node name="MajorSixth" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.68
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MinorSeventh" type="AudioStreamPlayer" parent="."]
+[node name="MinorSeventh" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.78
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="MajorSeventh" type="AudioStreamPlayer" parent="."]
+[node name="MajorSeventh" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
-max_polyphony = 4
+script = ExtResource("10_xqkxu")
 
-[node name="Octave" type="AudioStreamPlayer" parent="."]
+[node name="Octave" type="AudioStreamPlayer" parent="." groups=["notes"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 2.0
-max_polyphony = 4
+script = ExtResource("10_xqkxu")

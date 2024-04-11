@@ -1,2 +1,13 @@
 res://scenes/main.tscn
 res://themes/smol_label_setting.tres
+res://scenes/cat.tscn
+res://instrument.tscn
+res://scenes/big_gato.tscn
+res://scripts/cat.gd
+res://scenes/instrument.gd
+res://scripts/coins.gd
+res://scripts/buy_cat.gd
+res://note.gd
+res://scenes/beat_tracker.gd
+res://scripts/big_gato.gd
+res://scripts/global_helpers.gd

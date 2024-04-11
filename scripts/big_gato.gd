@@ -21,9 +21,11 @@ func pet_kitty() -> void:
 	Coins.deposit(1)
 
 	var anim_sprite_base_pos: Vector2 = anim_sprite.global_position
+
 	for i: int in 4:
 		anim_sprite.global_position += Math.randv(.5)
 		await get_tree().process_frame
+
 	anim_sprite.global_position = anim_sprite_base_pos
 
 	if (count % 4) == 0:

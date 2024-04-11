@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bb80huha7g3t0"
-path="res://.godot/imported/mc2.wav-18062b4c7eefd32b13a34981e8640561.sample"
+uid="uid://cnsd3aletj07r"
+path="res://.godot/imported/nyaa7.wav-2504719a6c50c4621fe003cc34e302a2.sample"
 
 [deps]
 
-source_file="res://sounds/mc2.wav"
-dest_files=["res://.godot/imported/mc2.wav-18062b4c7eefd32b13a34981e8640561.sample"]
+source_file="res://sounds/nyaa_instrument/nyaa7.wav"
+dest_files=["res://.godot/imported/nyaa7.wav-2504719a6c50c4621fe003cc34e302a2.sample"]
 
 [params]
 
