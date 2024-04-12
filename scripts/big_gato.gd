@@ -11,6 +11,20 @@ extends MarginContainer
 
 var beat: int
 var count: int = 0
+var switch_note: bool = false
+var intro_pos: int = 0
+var do_intro: bool = false
+
+func _ready() -> void:
+	emote_label.text = "intro? \nY or N"
+
+func _process(delta: float) -> void:
+	if !do_intro:
+		if Input.is_key_pressed(KEY_Y):
+			do_intro = true
+			_do_emote()
+	if Input.is_key_pressed(KEY_N):
+		do_intro = false
 
 func _on_pet_kitty_button_pressed() -> void:
 	pet_kitty()
@@ -31,10 +45,15 @@ func pet_kitty() -> void:
 	if (count % 4) == 0:
 		_do_emote()
 
-var switch_note: bool = false
 func _do_emote() -> void:
-	var text_emotes = preload("res://scripts/emotes.gd")
-	emote_label.text = text_emotes.amiguito.pick_random()
+	if do_intro:
+		if intro_pos < Emotes.intro.size():
+			emote_label.text = Emotes.intro[min(intro_pos, Emotes.intro.size()-1)]
+			intro_pos += 1
+	elif CatData.first_cat_bought == false:
+		emote_label.text = ["Are you gonna buy one?", "meow", "mrowr"].pick_random()
+	else:
+		emote_label.text = Emotes.big_gato.pick_random()
 	emote_label.show()
 	nyaa_kitty_sound.pitch_scale = 2 ** (-12.0 / 12.0)
 	switch_note = !switch_note
@@ -59,7 +78,7 @@ func _on_pet_timer_timeout() -> void:
 	if pet_kitty_button.button_pressed or Input.is_action_pressed("pet"):
 		pet_kitty()
 		sleep_timer.start(1.0)
-		pet_timer.start(0.468)
+		pet_timer.start(0.234)
 		await get_tree().process_frame
 
 func _on_sleep_timer_timeout() -> void:
@@ -69,13 +88,14 @@ func _on_sleep_timer_timeout() -> void:
 
 func _on_pet_kitty_button_mouse_entered() -> void:
 	pet_label.show()
+	await Helpers.tree_timer(1.0)
+	pet_label.hide()
 
 func _on_pet_kitty_button_mouse_exited() -> void:
 	pet_label.hide()
 
 func _on_hide_emote_timer_timeout() -> void:
 	emote_label.text = ""
-
 
 func track_beat(_beat: int) -> void:
 	beat = _beat

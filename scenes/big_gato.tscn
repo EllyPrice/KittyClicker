@@ -103,30 +103,21 @@ sprite_frames = SubResource("SpriteFrames_edmbm")
 animation = &"idle"
 offset = Vector2(8, 8)
 
-[node name="EmoteLabel" type="Label" parent="AnimSprite"]
+[node name="EmoteLabel" type="Label" parent="."]
 unique_name_in_owner = true
-anchors_preset = -1
-anchor_left = 0.538
-anchor_top = -0.211
-anchor_right = 0.538
-anchor_bottom = -0.211
-offset_left = -1.608
-offset_top = -0.323999
-offset_right = 30.392
-offset_bottom = 9.676
-scale = Vector2(0.1, 0.1)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "meow"
 label_settings = ExtResource("1_jd3aj")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="PetLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
 z_as_relative = false
 layout_mode = 2
+size_flags_vertical = 8
 text = "pet big gato"
 label_settings = SubResource("LabelSettings_xbrax")
 horizontal_alignment = 1
@@ -141,5 +132,5 @@ pitch_scale = 0.5
 [connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]
 [connection signal="mouse_entered" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_entered"]
 [connection signal="mouse_exited" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_exited"]
-[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]
 [connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]

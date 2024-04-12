@@ -3,7 +3,6 @@ class_name Cat extends Node2D
 @onready var emote_label: Label = $EmoteLabel
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
-@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const CATCOIN = preload("res://scenes/catcoin.tscn")
 var flipped: bool = false
@@ -90,8 +89,10 @@ func avoid_boundaries(_dir: Vector2) -> Vector2:
 		_dir.y = 1
 	return _dir
 
+var count: int = 0
 func emote() -> void:
-	var text_emotes = preload("res://scripts/emotes.gd")
+	var text_emotes: GDScript = preload("res://scripts/emotes.gd")
+
 	emote_label.text = text_emotes.amiguito.pick_random()
 	emote_label.show()
 	await Helpers.tree_timer(bpm*4)

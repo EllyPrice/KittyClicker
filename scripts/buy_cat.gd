@@ -64,6 +64,8 @@ func set_cost_label() -> void:
 
 func buy_cat() -> void:
 	if (Coins.amount - cost) >= 0:
+		if CatData.first_cat_bought == false:
+			CatData.first_cat_bought = true
 		Coins.withdraw(cost)
 		cost *= 1.15
 		set_cost_label()
@@ -94,5 +96,3 @@ func make_cat() -> void:
 	cat.note = note
 	cat.spriteframes = spriteframes
 	pressed.emit(cat)
-	print(notes)
-
