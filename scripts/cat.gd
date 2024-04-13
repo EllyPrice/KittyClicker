@@ -3,6 +3,7 @@ class_name Cat extends Node2D
 @onready var emote_label: Label = $EmoteLabel
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
+@onready var timer: Timer = $Timer
 
 const CATCOIN = preload("res://scenes/catcoin.tscn")
 var flipped: bool = false
@@ -17,8 +18,10 @@ var note: int
 var my_beat: int
 var bpm: float
 var registered: bool
+var is_cowboy: bool
 
 func _ready() -> void:
+	CatData.cats.push_front(self)
 	anim_sprite.sprite_frames = spriteframes
 
 func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
@@ -30,16 +33,16 @@ func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
 			registered = true
 	if my_beat == beat:
 		_on_my_beat()
-	update()
+	_update()
 
 func _on_my_beat() -> void:
-	pick_random_direction()
-	emote()
-	deposit_payout()
+	_pick_random_direction()
+	_emote()
+	_deposit_payout()
 	is_moving = !is_moving
-	animate()
+	_animate()
 
-func animate() -> void:
+func _animate() -> void:
 	anim_sprite.stop()
 	anim_sprite.animation = "meow"
 	anim_sprite.frame = 0
@@ -49,11 +52,14 @@ func animate() -> void:
 	else:
 		anim_sprite.play("idle")
 
-func update() -> void:
-	anim_sprite.flip_h = dir.x < 0.0
+func _update() -> void:
+	if dir.x < 0.0:
+		anim_sprite.scale.x = -1
+	else:
+		anim_sprite.scale.x = 1
 	if is_moving:
 		for i: int in 2:
-			dir = avoid_boundaries(dir)
+			dir = _avoid_boundaries(dir)
 			var new_pos: Vector2 = global_position + dir
 			var new_pos_x: float = new_pos.x
 			var new_pos_y: float = new_pos.y
@@ -64,7 +70,7 @@ func update() -> void:
 			global_position = new_pos
 			await Helpers.tree_timer(bpm)
 
-func pick_random_direction() -> void:
+func _pick_random_direction() -> void:
 	match Math.randmod(8):
 		0: dir = Vector2.RIGHT
 		1: dir = Vector2.LEFT
@@ -75,7 +81,7 @@ func pick_random_direction() -> void:
 		6: dir = Vector2(1, -1)
 		7: dir = Vector2(-1, -1)
 
-func avoid_boundaries(_dir: Vector2) -> Vector2:
+func _avoid_boundaries(_dir: Vector2) -> Vector2:
 	const PADDING: int = 64
 	const START: Vector2 = Vector2(PADDING, PADDING)
 	var end: Vector2 = Vector2(400, 576) - START
@@ -89,28 +95,28 @@ func avoid_boundaries(_dir: Vector2) -> Vector2:
 		_dir.y = 1
 	return _dir
 
-var count: int = 0
-func emote() -> void:
-	var text_emotes: GDScript = preload("res://scripts/emotes.gd")
-
-	emote_label.text = text_emotes.amiguito.pick_random()
+func _emote() -> void:
+	if is_cowboy:
+		emote_label.text = Emotes.meowboy.pick_random()
+		emote_label.modulate = Color.DARK_RED
+	else:
+		emote_label.text = Emotes.amiguito.pick_random()
+		emote_label.modulate = Color.WHITE
 	emote_label.show()
-	await Helpers.tree_timer(bpm*4)
-	emote_label.hide()
+	timer.start(2.0)
 
-func deposit_payout() -> void:
+func _deposit_payout() -> void:
 	var catcoin: Node2D = CATCOIN.instantiate()
 	var tween: Tween = get_tree().create_tween()
 
 	add_child(catcoin)
 	tween.tween_property(catcoin, "global_position", catcoin.global_position + Vector2(0, -16), 0.5)
-	tween.tween_callback(delete_coin.bind(catcoin))
+	tween.tween_callback(_delete_coin.bind(catcoin))
 
 	Coins.deposit(payout)
 
-func delete_coin(catcoin: Node) -> void:
+func _delete_coin(catcoin: Node) -> void:
 	catcoin.queue_free()
-	emote_label.hide()
 
-func _on_bar() -> void:
-	pass
+func _on_timer_timeout() -> void:
+	emote_label.hide()

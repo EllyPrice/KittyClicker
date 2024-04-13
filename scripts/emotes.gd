@@ -53,7 +53,7 @@ const amiguito: Array[String] = [
 	"hows it goin fellas?",
 	"long time no see jim",
 	"my wife left meee...ow.",
-	"Google Meowrray Bookchin",
+	"Goog le Meowrray Bonkchin",
 	"watch out for cucumbers",
 	"MEOWMEOWMEOWMEOWMEOWMEOWMEOWMEOWMEOW",
 ]
@@ -81,8 +81,6 @@ const big_gato: Array[String] = [
 	"M E O W  B U T  B I G G E R ",
 	"YES,
 		\nTHIS PLEASES ME.",
-	"PWEASE PET ME
-		\nUWU",
 	"I COMMAND YOU
 		\nTO PET ME!",
 	"All your base
@@ -94,18 +92,19 @@ const big_gato: Array[String] = [
 	"Live. Laugh. Meow.",
 	"hmmmeow...",
 	"purrhaps",
-	"can haz pets?",
+	"Boop my snoot, or else.",
 	"you've cat to be \nkitten me right meow",
 	"like a boss",
 	"thug life",
+	"do i have to\nkeep saying stuff\nafter the intro?"
 ]
 
 var intro: Array[String] = [
 	"Hello.",
-	"...",
 	"meow",
 	"...",
-	"They call me Gato.",
+	"'round these parts...",
+	"they call me Gato",
 	"meow",
 	"...",
 	"in this game",
@@ -116,6 +115,9 @@ var intro: Array[String] = [
 	"...",
 	"...",
 	"CATS!",
+	"oh look",
+	"heh",
+	"hey there lil guy",
 	"mreowr...",
 	"...",
 	"and give them...",
@@ -124,7 +126,31 @@ var intro: Array[String] = [
 	"...",
 	"...",
 	"hats?",
-	".",
-	"idk...
-	\n< just buy one",
+	". . .",
+	"idk...",
+	"...",
+	"so, yeah",
+	"meow",
+	"have fun",
+	"",
+	"now give that back",
 	]
+
+var meowboy: Array[String] = [
+	"Meowdy, pawdner.",
+	"Excuse meow, miss",
+	"M'eow lady...",
+	"We're meow ghosts\nthan people...",
+	"Dammit Dutch!",
+	"Hey there cowpoke",
+	"You, sir, are a fish.",
+	"all them years, dutch...",
+	"THARS A SNAKE IN MEOW BOOT",
+	"wHERE's thAt DaMN\nH O R S E",
+	"Name's Arthpurr Meowgan.",
+	"Just one meowr score.",
+	"Outlaws Fur Life.",
+	"Yep. Sure is nice.",
+	"Hands to the sky!",
+	"WHAT IN TARNATION",
+]

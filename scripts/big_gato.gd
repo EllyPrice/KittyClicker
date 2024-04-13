@@ -3,41 +3,68 @@ extends MarginContainer
 @onready var anim_sprite: AnimatedSprite2D = %AnimSprite
 @onready var emote_label: Label = %EmoteLabel
 @onready var pet_kitty_button: Button = %PetKittyButton
-@onready var pet_timer: Timer = %PetTimer
 @onready var sleep_timer: Timer = %SleepTimer
 @onready var nyaa_kitty_sound: AudioStreamPlayer2D = %NyaaKittySound
 @onready var pet_label: Label = %PetLabel
 @onready var hide_emote_timer: Timer = %HideEmoteTimer
+@onready var auto_pet_timer: Timer = %AutoPetTimer
+@onready var coin_spawner: Node2D = %CoinSpawner
 
+const CATCOIN = preload("res://scenes/big_catcoin.tscn")
+
+var payout: float = 1
 var beat: int
 var count: int = 0
 var switch_note: bool = false
 var intro_pos: int = 0
-var do_intro: bool = false
+var used_emotes: Array[String]
+var anim_sprite_base_pos: Vector2
 
-func _ready() -> void:
-	emote_label.text = "intro? \nY or N"
 
-func _process(delta: float) -> void:
-	if !do_intro:
-		if Input.is_key_pressed(KEY_Y):
-			do_intro = true
-			_do_emote()
-	if Input.is_key_pressed(KEY_N):
-		do_intro = false
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip"):
+		intro_pos += 26
+
 
 func _on_pet_kitty_button_pressed() -> void:
-	pet_kitty()
-	pet_timer.start(0.468)
+	_pet_kitty()
+	auto_pet_timer.start(0.468)
 
-func pet_kitty() -> void:
+
+func _on_auto_pet_timer_timeout() -> void:
+	if pet_kitty_button.button_pressed or Input.is_action_pressed("pet"):
+		_pet_kitty()
+		sleep_timer.start(1.0)
+		auto_pet_timer.start(0.234)
+		await get_tree().process_frame
+
+
+func _on_sleep_timer_timeout() -> void:
+	anim_sprite.animation = "idle"
+	anim_sprite.frame = 0
+	anim_sprite.stop()
+
+
+func _on_pet_kitty_button_mouse_entered() -> void:
+	pet_label.show()
+	await Helpers.tree_timer(1.0)
+	pet_label.hide()
+
+
+func _on_pet_kitty_button_mouse_exited() -> void:
+	pet_label.hide()
+
+
+func _on_hide_emote_timer_timeout() -> void:
+	emote_label.text = ""
+
+func _pet_kitty() -> void:
 	count += 1
-	Coins.deposit(1)
 
-	var anim_sprite_base_pos: Vector2 = anim_sprite.global_position
+	anim_sprite_base_pos = anim_sprite.global_position
 
 	for i: int in 4:
-		anim_sprite.global_position += Math.randv(.5)
+		anim_sprite.global_position += Math.randv(1.0)
 		await get_tree().process_frame
 
 	anim_sprite.global_position = anim_sprite_base_pos
@@ -45,58 +72,80 @@ func pet_kitty() -> void:
 	if (count % 4) == 0:
 		_do_emote()
 
+	_deposit_payout()
+
 func _do_emote() -> void:
-	if do_intro:
-		if intro_pos < Emotes.intro.size():
-			emote_label.text = Emotes.intro[min(intro_pos, Emotes.intro.size()-1)]
-			intro_pos += 1
+	if intro_pos < Emotes.intro.size():
+		_do_intro()
 	elif CatData.first_cat_bought == false:
 		emote_label.text = ["Are you gonna buy one?", "meow", "mrowr"].pick_random()
 	else:
-		emote_label.text = Emotes.big_gato.pick_random()
+		match randi() % 4:
+			0:
+				var random_emote: String = Emotes.big_gato.pick_random()
+				if used_emotes.size() >= Emotes.big_gato.size():
+					used_emotes.clear()
+				if random_emote not in used_emotes:
+					emote_label.text = random_emote
+					used_emotes.push_back(random_emote)
+				else:
+					_do_emote()
+			_:
+				emote_label.text = ""
 	emote_label.show()
-	nyaa_kitty_sound.pitch_scale = 2 ** (-12.0 / 12.0)
 	switch_note = !switch_note
 	nyaa_kitty_sound.play()
-	flip_sprite()
+	_flip_sprite()
 	hide_emote_timer.start(2)
 
-func flip_sprite() -> void:
+
+func _flip_sprite() -> void:
 	if !anim_sprite.is_playing():
-		anim_sprite.flip_h = Math.coinflip()
+		var coinflip: bool = Math.coinflip()
+		anim_sprite.flip_h = coinflip
+		if anim_sprite.flip_h:
+			coin_spawner.position.x = 6
+		else:
+			coin_spawner.position.x = -6
 	match Math.randmod(10):
 		0:
+			anim_sprite.play("meow")
+			await Helpers.tree_timer(1.0)
 			anim_sprite.play_backwards("walk")
 		2:
+			anim_sprite.play("meow")
+			await Helpers.tree_timer(1.0)
 			anim_sprite.play("walk")
 			sleep_timer.start(1.0)
 		_:
 			anim_sprite.play("meow")
 			sleep_timer.start(0.25)
 
-func _on_pet_timer_timeout() -> void:
-	if pet_kitty_button.button_pressed or Input.is_action_pressed("pet"):
-		pet_kitty()
-		sleep_timer.start(1.0)
-		pet_timer.start(0.234)
-		await get_tree().process_frame
 
-func _on_sleep_timer_timeout() -> void:
-	anim_sprite.animation = "idle"
-	anim_sprite.frame = 0
-	anim_sprite.stop()
+func _deposit_payout() -> void:
+	var catcoin: Node2D = CATCOIN.instantiate()
+	var tween: Tween = get_tree().create_tween()
+	catcoin.scale = Vector2(0.2, 0.2)
+	catcoin.payout = payout
 
-func _on_pet_kitty_button_mouse_entered() -> void:
-	pet_label.show()
-	await Helpers.tree_timer(1.0)
-	pet_label.hide()
+	coin_spawner.add_child(catcoin)
+	tween.set_parallel(true)
+	tween.tween_property(catcoin, "global_position", catcoin.global_position - Vector2(0, 64), 0.5)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(catcoin, "global_position", catcoin.global_position - Vector2(randf_range(-64, 64), 512), 3.0)
+	tween.parallel().tween_property(catcoin, "scale", Vector2(0.1, 0.1), 3.0)
 
-func _on_pet_kitty_button_mouse_exited() -> void:
-	pet_label.hide()
-
-func _on_hide_emote_timer_timeout() -> void:
-	emote_label.text = ""
-
-func track_beat(_beat: int) -> void:
-	beat = _beat
-
+var cowboy_cat: Cat
+func _do_intro() -> void:
+	emote_label.text = Emotes.intro[min(intro_pos, Emotes.intro.size()-1)]
+	intro_pos += 1
+	if emote_label.text == "CATS!":
+		get_tree().call_group("starter_cat", "spawn_starter")
+	if emote_label.text == "hats?":
+		cowboy_cat = CatData.cats.front()
+		cowboy_cat.get_child(1).add_child(load("res://scenes/meowboy_hat.tscn").instantiate())
+		cowboy_cat.is_cowboy = true
+	if emote_label.text == "now give that back":
+		CatData.is_intro_finished = true
+		cowboy_cat.get_child(1).get_child(0).queue_free()
+		cowboy_cat.is_cowboy = false

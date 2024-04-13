@@ -1,11 +1,11 @@
 extends Timer
 
 var beat: int = 1
-var measure_size: int = 65
-var measures: Array = range(1, measure_size)
+var MEASURE_SIZE: int = 33
+var measures: Array = range(1, MEASURE_SIZE)
 
 func _on_timeout() -> void:
-	if beat < 64:
+	if beat < MEASURE_SIZE-1:
 		beat += 1
 	else:
 		beat = 1

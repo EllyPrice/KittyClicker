@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d62stpahwktt"]
+
+[ext_resource type="Texture2D" uid="uid://b7fiuxcxdkeuq" path="res://images/hats/meowboy_hat.png" id="1_u6v14"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = 1
+position = Vector2(2, -2)
+texture = ExtResource("1_u6v14")

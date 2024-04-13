@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b483aqbwmt8vt" path="res://sounds/nyaa_instrument/nyaa5.wav" id="6_pwqp7"]
 [ext_resource type="AudioStream" uid="uid://b4yd0141pxp1b" path="res://sounds/nyaa_instrument/nyaa6.wav" id="7_84a38"]
 [ext_resource type="AudioStream" uid="uid://cnsd3aletj07r" path="res://sounds/nyaa_instrument/nyaa7.wav" id="8_h0plg"]
-[ext_resource type="Script" path="res://note.gd" id="10_xqkxu"]
+[ext_resource type="Script" path="res://scripts/note.gd" id="10_wx5gx"]
 
 [node name="Instrument" type="Node"]
 script = ExtResource("1_80i7n")
@@ -23,56 +23,56 @@ stream_7 = ExtResource("8_h0plg")
 
 [node name="Unison" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MinorSecond" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.06
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MajorSecond" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.12
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MinorThird" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.19
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MajorThird" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.26
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="PerfectFourth" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="Tritone" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.41
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="PerfectFifth" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MajorSixth" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.68
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MinorSeventh" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 1.78
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="MajorSeventh" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")
 
 [node name="Octave" type="AudioStreamPlayer" parent="." groups=["sequencers"]]
 stream = ExtResource("2_4h4on")
 pitch_scale = 2.0
-script = ExtResource("10_xqkxu")
+script = ExtResource("10_wx5gx")

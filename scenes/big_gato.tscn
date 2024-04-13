@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://00ntafa4pqmq" path="res://images/cats/bob/bob8.png" id="9_g33sg"]
 [ext_resource type="Texture2D" uid="uid://d1bul6j65o7l4" path="res://images/cats/bob/bob9.png" id="10_mfqro"]
 [ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="12_pxhx0"]
-[ext_resource type="AudioStream" uid="uid://prcg27txatbj" path="res://sounds/nyaa_instrument/nyaa1.wav" id="13_d1rdw"]
+[ext_resource type="AudioStream" uid="uid://vqu8m153f7oi" path="res://sounds/nyaa_low.wav" id="13_btau2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00y4o"]
 
@@ -78,7 +78,7 @@ custom_minimum_size = Vector2(160, 160)
 size_flags_horizontal = 8
 script = ExtResource("1_pmwri")
 
-[node name="PetTimer" type="Timer" parent="."]
+[node name="AutoPetTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
 
@@ -98,10 +98,15 @@ flat = true
 
 [node name="AnimSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(80, 80)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_edmbm")
 animation = &"idle"
-offset = Vector2(8, 8)
+
+[node name="CoinSpawner" type="Node2D" parent="AnimSprite"]
+unique_name_in_owner = true
+show_behind_parent = true
+position = Vector2(-4, 4)
 
 [node name="EmoteLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -124,13 +129,13 @@ horizontal_alignment = 1
 
 [node name="NyaaKittySound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("13_d1rdw")
-pitch_scale = 0.5
+stream = ExtResource("13_btau2")
+volume_db = -2.453
 
-[connection signal="timeout" from="PetTimer" to="." method="_on_pet_timer_timeout"]
+[connection signal="timeout" from="AutoPetTimer" to="." method="_on_auto_pet_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
 [connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]
 [connection signal="mouse_entered" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_entered"]
 [connection signal="mouse_exited" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_exited"]
-[connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]
+[connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]

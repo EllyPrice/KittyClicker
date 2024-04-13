@@ -41,8 +41,9 @@ func _ready() -> void:
 	set_cost_label()
 
 func _process(delta: float) -> void:
-	if Coins.amount > cost:
-		show()
+	if CatData.is_intro_finished:
+		if Coins.amount > cost:
+			show()
 
 func _on_adopt_button_mouse_entered() -> void:
 	floating_text.show()
@@ -96,3 +97,6 @@ func make_cat() -> void:
 	cat.note = note
 	cat.spriteframes = spriteframes
 	pressed.emit(cat)
+
+func spawn_starter() -> void:
+	make_cat()

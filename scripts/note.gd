@@ -5,7 +5,7 @@ var sequence: Array[int]
 var streams: Array[AudioStream]
 
 func _ready() -> void:
-	sequence.resize(BeatTracker.measure_size)
+	sequence.resize(BeatTracker.MEASURE_SIZE)
 
 #func _on_beat(beat: int) -> void:
 	#if sequence[beat] > 0:
