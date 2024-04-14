@@ -1,3 +1,4 @@
+res://default_bus_layout.tres
 res://scenes/main.tscn
 res://themes/smol_label_setting.tres
 res://scenes/cat.tscn
@@ -8,9 +9,12 @@ res://scenes/catcoin.tscn
 res://scenes/big_catcoin.tscn
 res://scenes/cat_container.tscn
 res://scenes/meowboy_hat.tscn
+res://scenes/catcoin.gd
+res://scripts/big_catcoin.gd
 res://scripts/cat.gd
-res://scripts/emotes.gd
-res://scripts/big_gato.gd
+res://scripts/main_menu.gd
+res://scripts/coins.gd
+res://scripts/coins_display.gd
+res://cat_coin_display.tscn
 res://scripts/beat_tracker.gd
-res://scripts/cat_data.gd
-res://scripts/buy_cat.gd
+res://scripts/big_gato.gd

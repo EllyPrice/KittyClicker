@@ -1,11 +1,7 @@
 class_name Cat extends Node2D
 
-@onready var emote_label: Label = $EmoteLabel
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shadow: Sprite2D = $Shadow
-@onready var timer: Timer = $Timer
-
 const CATCOIN = preload("res://scenes/catcoin.tscn")
+
 var flipped: bool = false
 var catid: int
 var dir: Vector2 = Vector2.ZERO
@@ -13,24 +9,32 @@ var is_moving: bool = false
 var payout: float = 1
 var spriteframes: SpriteFrames
 
-var instrument: StringName
 var note: int
 var my_beat: int
 var bpm: float
 var registered: bool
 var is_cowboy: bool
+var sound: AudioStream
+var original_sound: AudioStream
+
+@onready var emote_label: Label = $EmoteLabel
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shadow: Sprite2D = $Shadow
+@onready var timer: Timer = $Timer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	CatData.cats.push_front(self)
+	original_sound = sound
 	anim_sprite.sprite_frames = spriteframes
+	audio_stream_player_2d.stream = sound
+	audio_stream_player_2d.pitch_scale = 2.0 ** (note/12.0)
+
+	CatData.cats.push_front(self)
 
 func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
 	bpm = wait_time
 	if my_beat not in measures:
 		my_beat = beat
-		if !registered:
-			get_tree().call_group(instrument, "_on_cat_registered", beat, note)
-			registered = true
 	if my_beat == beat:
 		_on_my_beat()
 	_update()
@@ -41,6 +45,16 @@ func _on_my_beat() -> void:
 	_deposit_payout()
 	is_moving = !is_moving
 	_animate()
+	for i: int in randi_range(0, 2):
+		await get_tree().process_frame
+	if is_cowboy:
+		if Math.coinflip():
+			audio_stream_player_2d.stream = load("res://sounds/cats/meowboy_G.wav")
+		else:
+			audio_stream_player_2d.stream = load("res://sounds/cats/meowboy_B.wav")
+	elif audio_stream_player_2d.stream != original_sound:
+		audio_stream_player_2d.stream = original_sound
+	audio_stream_player_2d.play()
 
 func _animate() -> void:
 	anim_sprite.stop()

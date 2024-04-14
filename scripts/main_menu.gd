@@ -2,7 +2,9 @@ extends TabContainer
 var base_mem_free: int
 
 func _ready() -> void:
-	pass
+
+## Sorting algorithm for emotes
+## Uncomment if needed
 	#var text_emotes = preload("res://scripts/emotes.gd")
 	#var arr: Array[String] = [""]
 	#for s: String in text_emotes.big_gato:
@@ -18,6 +20,8 @@ func _ready() -> void:
 				#arr[i] = temp
 	#print(arr)
 			#await Helpers.tree_timer(.01)
+
+	pass
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("open_menu"):

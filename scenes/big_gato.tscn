@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://00ntafa4pqmq" path="res://images/cats/bob/bob8.png" id="9_g33sg"]
 [ext_resource type="Texture2D" uid="uid://d1bul6j65o7l4" path="res://images/cats/bob/bob9.png" id="10_mfqro"]
 [ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="12_pxhx0"]
-[ext_resource type="AudioStream" uid="uid://vqu8m153f7oi" path="res://sounds/nyaa_low.wav" id="13_btau2"]
+[ext_resource type="AudioStream" uid="uid://vqu8m153f7oi" path="res://sounds/cats/nyaa_low.wav" id="13_e7aj6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00y4o"]
 
@@ -75,8 +75,13 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="BigGato" type="MarginContainer" groups=["cats"]]
 custom_minimum_size = Vector2(160, 160)
-size_flags_horizontal = 8
+size_flags_horizontal = 10
+size_flags_vertical = 8
 script = ExtResource("1_pmwri")
+
+[node name="IntroTimer" type="Timer" parent="."]
+wait_time = 0.938
+autostart = true
 
 [node name="AutoPetTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -110,6 +115,7 @@ position = Vector2(-4, 4)
 
 [node name="EmoteLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -129,9 +135,11 @@ horizontal_alignment = 1
 
 [node name="NyaaKittySound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("13_btau2")
+stream = ExtResource("13_e7aj6")
 volume_db = -2.453
+panning_strength = 0.0
 
+[connection signal="timeout" from="IntroTimer" to="." method="_on_intro_timer_timeout"]
 [connection signal="timeout" from="AutoPetTimer" to="." method="_on_auto_pet_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
 [connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]

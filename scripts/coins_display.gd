@@ -1,26 +1,35 @@
-extends Label
+extends Node2D
 
 var last_text: String
+
+@onready var beat_tracker_half: Timer = %BeatTrackerHalf
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var label: Label = $Label
+@onready var audio_stream_player_coin: AudioStreamPlayer = $AudioStreamPlayerCoin
 
 func _ready() -> void:
-	text = "%s catcoins" % Math.format_large_number(Coins.amount)
+	label.text = "%s catcoins" % Math.format_large_number(Coins.amount)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var new_text: String = "%s catcoins" % Math.format_large_number(Coins.amount)
 	if new_text != last_text:
-		text = "%s catcoins" % Math.format_large_number(Coins.amount)
+		label.text = "%s catcoins" % Math.format_large_number(Coins.amount)
 		await Helpers.tree_timer(.1)
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("entered")
+	animate_and_play_sound()
+
+func animate_and_play_sound() -> void:
 	var tween: Tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.tween_property(sprite, "scale", sprite.scale + Vector2(.2, .2), .01)
-	tween.parallel().tween_property(sprite, "position", sprite.position + Math.randv(2.0), .01)
-	tween.parallel().tween_property(sprite, "position", sprite.position + Math.randv(2.0), .01)
-	tween.tween_property(sprite, "scale", Vector2(2, 2), 2.0)
-	tween.parallel().tween_property(sprite, "position", Vector2(5, 15), 2.0)
+
+	tween.tween_property(label, "scale", label.scale * 1.05, 0.1)
+	tween.parallel().tween_property(sprite, "scale", sprite.scale * 1.05, 0.1)
+
+	tween.tween_property(label, "scale", Vector2(1.0, 1.0), 0.15)
+	tween.parallel().tween_property(sprite, "scale", Vector2(2.0, 2.0), 0.15)
+
+	await beat_tracker_half.timeout
+	audio_stream_player_coin.play()
+

@@ -52,7 +52,7 @@ expand_mode = 1
 [node name="CostLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "1"
+text = "999k"
 label_settings = ExtResource("5_3q7v3")
 vertical_alignment = 2
 

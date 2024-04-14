@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://t21yh5gaf8n"]
+[gd_scene load_steps=6 format=3 uid="uid://t21yh5gaf8n"]
 
 [ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/ui/stackable_catcoin.png" id="1_fcnot"]
 [ext_resource type="Script" path="res://scripts/big_catcoin.gd" id="2_qfhnd"]
+[ext_resource type="AudioStream" uid="uid://dcjfd8qacu1oy" path="res://sounds/coins/coin1.wav" id="3_yt63n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7jdh"]
 animations = [{
@@ -34,6 +35,13 @@ wait_time = 3.0
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yt63n")
+volume_db = -24.0
+max_polyphony = 4
+panning_strength = 0.0
+bus = &"Coins"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -11,7 +11,7 @@ signal pressed(cat: Cat)
 @export var spriteframes: SpriteFrames
 
 @export_category("Sound")
-@export var instrument: StringName = "Nyaa"
+@export var sound: AudioStream
 
 @export_group("Notes")
 @export var unison: bool
@@ -93,7 +93,7 @@ func make_cat() -> void:
 			note = n
 	var cat: Cat = CAT.instantiate()
 	cat.payout = payout
-	cat.instrument = instrument
+	cat.sound = sound
 	cat.note = note
 	cat.spriteframes = spriteframes
 	pressed.emit(cat)
