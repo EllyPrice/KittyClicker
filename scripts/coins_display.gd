@@ -2,6 +2,12 @@ extends Node2D
 
 var last_text: String
 
+var sounds: Array[AudioStreamWAV] = [
+	load("uid://cpkp2oy8xbvcl"),
+	load("uid://kq4vtq3hgn07"),
+	load("uid://cma6elnhcio0m"),
+]
+
 @onready var beat_tracker_half: Timer = %BeatTrackerHalf
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var label: Label = $Label
@@ -41,12 +47,5 @@ func animate_and_play_sound() -> void:
 	pick_next_sound()
 	audio_stream_player.play()
 
-var sounds: Array[AudioStreamWAV] = [
-	load("uid://cpkp2oy8xbvcl"),
-	load("uid://kq4vtq3hgn07"),
-	load("uid://cma6elnhcio0m"),
-]
-var sounds_idx: int
 func pick_next_sound() -> void:
-	sounds_idx = sounds_idx + 1 if sounds_idx < 2 else 0
-	audio_stream_player.stream = sounds[sounds_idx]
+	audio_stream_player.stream = sounds.pick_random()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cq7lvx1x7avly"]
+[gd_scene load_steps=25 format=3 uid="uid://cq7lvx1x7avly"]
 
 [ext_resource type="Texture2D" uid="uid://gk1n43ej1tnu" path="res://images/catcoin/catcoin_spinny1.png" id="1_bhsr4"]
 [ext_resource type="Texture2D" uid="uid://4j64fk0djcqu" path="res://images/catcoin/catcoin_spinny2.png" id="2_ddyqi"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ch8y457pouh4f" path="res://images/catcoin/catcoin_spinny17.png" id="17_41phd"]
 [ext_resource type="Texture2D" uid="uid://dubvknv6b4fvm" path="res://images/catcoin/catcoin_spinny18.png" id="18_n20yr"]
 [ext_resource type="AudioStream" uid="uid://dcjfd8qacu1oy" path="res://sounds/coins/coin1.wav" id="20_ivurw"]
+[ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="21_7fs8b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7jdh"]
 animations = [{
@@ -86,7 +87,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bgb"]
 size = Vector2(15, 16)
 
+[sub_resource type="LabelSettings" id="LabelSettings_nqjbs"]
+font = ExtResource("21_7fs8b")
+font_size = 8
+font_color = Color(0.521737, 0.372244, 0.223239, 1)
+outline_size = 4
+outline_color = Color(1, 0.866621, 0.568627, 1)
+
 [node name="Coin" type="AnimatedSprite2D"]
+z_index = 1
 position = Vector2(1.19209e-07, 1.19209e-07)
 sprite_frames = SubResource("SpriteFrames_i7jdh")
 autoplay = "default"
@@ -107,9 +116,21 @@ one_shot = true
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, -1.19209e-07)
 shape = SubResource("RectangleShape2D_l1bgb")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 15.0
+text = "1000"
+label_settings = SubResource("LabelSettings_nqjbs")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

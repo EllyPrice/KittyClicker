@@ -28,3 +28,5 @@ res://scripts/beat_listener.gd
 res://scripts/big_gato.gd
 res://scripts/coins_display.gd
 res://scripts/cat_emote_label.gd
+res://scripts/catcoin.gd
+res://scripts/big_catcoin.gd

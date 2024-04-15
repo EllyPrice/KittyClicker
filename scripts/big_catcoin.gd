@@ -3,6 +3,13 @@ class_name BigCatcoin
 
 var payout: float
 
+var sounds: Array[AudioStreamWAV] = [
+	load("uid://dcjfd8qacu1oy"),
+	load("uid://ds8vtskp2h24r"),
+	load("uid://c2axp40ojb446"),
+	load("uid://bm0lepvcyxakt"),
+]
+
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
@@ -18,15 +25,7 @@ func _ready() -> void:
 	tween.parallel().tween_property(self, "scale", Vector2(0.1, 0.1), 3.0)
 
 func pick_random_sound() -> void:
-	match randi() % 4:
-		0:
-			audio_stream_player_2d.stream = load("uid://dcjfd8qacu1oy")
-		1:
-			audio_stream_player_2d.stream = load("uid://ds8vtskp2h24r")
-		2:
-			audio_stream_player_2d.stream = load("uid://c2axp40ojb446")
-		3:
-			audio_stream_player_2d.stream = load("uid://bm0lepvcyxakt")
+	audio_stream_player_2d.stream = sounds.pick_random()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	delete_self_collision(area)

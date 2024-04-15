@@ -14,7 +14,7 @@ const CATCOIN: PackedScene = preload("res://scenes/big_catcoin.tscn")
 
 var payout: float = 1
 var beat: int
-var count: int = 1
+var count: int = 0
 var switch_note: bool = false
 var intro_pos: int = 0
 var used_emotes: Array[String]
@@ -95,7 +95,7 @@ func pet() -> void:
 		tween.tween_property(anim_sprite, "scale", original_scale, 0.2)
 
 	if count == 4:
-		count = 1
+		count = 0
 		emote()
 
 	if CatData.is_intro_finished:
