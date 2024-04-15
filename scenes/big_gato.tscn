@@ -93,7 +93,7 @@ unique_name_in_owner = true
 [node name="HideEmoteTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="PetKittyButton" type="Button" parent="."]
+[node name="PetButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_00y4o")
@@ -115,13 +115,14 @@ position = Vector2(-4, 4)
 
 [node name="EmoteLabel" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(160, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "meow"
 label_settings = ExtResource("1_jd3aj")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="PetLabel" type="Label" parent="."]
 unique_name_in_owner = true
@@ -143,7 +144,7 @@ panning_strength = 0.0
 [connection signal="timeout" from="AutoPetTimer" to="." method="_on_auto_pet_timer_timeout"]
 [connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]
 [connection signal="timeout" from="HideEmoteTimer" to="." method="_on_hide_emote_timer_timeout"]
-[connection signal="mouse_entered" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_entered"]
-[connection signal="mouse_exited" from="PetKittyButton" to="." method="_on_pet_kitty_button_mouse_exited"]
-[connection signal="pressed" from="PetKittyButton" to="." method="_on_pet_kitty_button_pressed"]
-[connection signal="pressed" from="PetKittyButton" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="PetButton" to="." method="_on_pet_button_mouse_entered"]
+[connection signal="mouse_exited" from="PetButton" to="." method="_on_pet_button_mouse_exited"]
+[connection signal="pressed" from="PetButton" to="." method="_on_pet_button_pressed"]
+[connection signal="animation_finished" from="AnimSprite" to="." method="_on_anim_sprite_animation_finished"]

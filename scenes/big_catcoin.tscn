@@ -1,18 +1,86 @@
-[gd_scene load_steps=6 format=3 uid="uid://t21yh5gaf8n"]
+[gd_scene load_steps=23 format=3 uid="uid://t21yh5gaf8n"]
 
-[ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/ui/stackable_catcoin.png" id="1_fcnot"]
+[ext_resource type="Texture2D" uid="uid://gk1n43ej1tnu" path="res://images/catcoin/catcoin_spinny1.png" id="1_apjbc"]
+[ext_resource type="Texture2D" uid="uid://4j64fk0djcqu" path="res://images/catcoin/catcoin_spinny2.png" id="2_nbqly"]
 [ext_resource type="Script" path="res://scripts/big_catcoin.gd" id="2_qfhnd"]
-[ext_resource type="AudioStream" uid="uid://dcjfd8qacu1oy" path="res://sounds/coins/coin1.wav" id="3_yt63n"]
+[ext_resource type="Texture2D" uid="uid://b3vgkdi2d7d65" path="res://images/catcoin/catcoin_spinny3.png" id="3_t0wtu"]
+[ext_resource type="Texture2D" uid="uid://clg3rv76jnsx4" path="res://images/catcoin/catcoin_spinny4.png" id="4_yc5iv"]
+[ext_resource type="Texture2D" uid="uid://b1xbca0e70xo" path="res://images/catcoin/catcoin_spinny5.png" id="5_6rb2d"]
+[ext_resource type="Texture2D" uid="uid://b0vvdnk8uvu03" path="res://images/catcoin/catcoin_spinny6.png" id="6_ckv7n"]
+[ext_resource type="Texture2D" uid="uid://c1d6jdybky7ey" path="res://images/catcoin/catcoin_spinny7.png" id="7_lh5fp"]
+[ext_resource type="Texture2D" uid="uid://dm8toph518wid" path="res://images/catcoin/catcoin_spinny8.png" id="8_naxkf"]
+[ext_resource type="Texture2D" uid="uid://5ktn4vyoyjul" path="res://images/catcoin/catcoin_spinny9.png" id="9_j6ews"]
+[ext_resource type="Texture2D" uid="uid://det6ibtj3oj7c" path="res://images/catcoin/catcoin_spinny10.png" id="10_xu2xl"]
+[ext_resource type="Texture2D" uid="uid://csahbepllotl1" path="res://images/catcoin/catcoin_spinny11.png" id="11_sb5nh"]
+[ext_resource type="Texture2D" uid="uid://dsy20efhh7sah" path="res://images/catcoin/catcoin_spinny12.png" id="12_mwx3e"]
+[ext_resource type="Texture2D" uid="uid://cwvq05f4hosfx" path="res://images/catcoin/catcoin_spinny13.png" id="13_fbqtp"]
+[ext_resource type="Texture2D" uid="uid://m8mwfpifqm4p" path="res://images/catcoin/catcoin_spinny14.png" id="14_an4ti"]
+[ext_resource type="Texture2D" uid="uid://cj2pt4hg50rl3" path="res://images/catcoin/catcoin_spinny15.png" id="15_f6x8v"]
+[ext_resource type="Texture2D" uid="uid://foxgbnnmge5y" path="res://images/catcoin/catcoin_spinny16.png" id="16_s88ce"]
+[ext_resource type="Texture2D" uid="uid://ch8y457pouh4f" path="res://images/catcoin/catcoin_spinny17.png" id="17_o5njm"]
+[ext_resource type="Texture2D" uid="uid://dubvknv6b4fvm" path="res://images/catcoin/catcoin_spinny18.png" id="18_nl0dn"]
+[ext_resource type="AudioStream" uid="uid://byh1t334qb8k3" path="res://sounds/coins/coinspin.wav" id="20_rl87d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7jdh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_fcnot")
+"texture": ExtResource("1_apjbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nbqly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t0wtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yc5iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6rb2d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ckv7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lh5fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_naxkf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j6ews")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xu2xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sb5nh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mwx3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_fbqtp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_an4ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_f6x8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_s88ce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_o5njm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_nl0dn")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6b847"]
@@ -23,6 +91,7 @@ show_behind_parent = true
 position = Vector2(1.19209e-07, 1.19209e-07)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_i7jdh")
+autoplay = "default"
 script = ExtResource("2_qfhnd")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -37,8 +106,8 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_yt63n")
-volume_db = -24.0
+stream = ExtResource("20_rl87d")
+volume_db = -18.0
 max_polyphony = 4
 panning_strength = 0.0
 bus = &"Coins"

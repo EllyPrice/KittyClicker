@@ -2,13 +2,14 @@ extends TabContainer
 var base_mem_free: int
 
 func _ready() -> void:
+	sort_emote_array()
 
+func sort_emote_array() -> void:
 ## Sorting algorithm for emotes
 ## Uncomment if needed
-	#var text_emotes = preload("res://scripts/emotes.gd")
 	#var arr: Array[String] = [""]
-	#for s: String in text_emotes.big_gato:
-		#if text_emotes.amiguito.back() not in arr:
+	#for s: String in Emotes.meowboy: # fill this in with whatever array needs sortin
+		#if Emotes.meowboy.back() not in arr:
 			#arr.push_back(s)
 		#await Helpers.tree_timer(.01)
 		#print(arr)
@@ -18,12 +19,13 @@ func _ready() -> void:
 				#var temp = arr[i + 1]
 				#arr[i + 1] = arr[i]
 				#arr[i] = temp
-	#print(arr)
-			#await Helpers.tree_timer(.01)
-
+		#print(arr)
+		#await Helpers.tree_timer(.01)
+	#for s: String in arr:
+		#print("\"", s, "\",")
 	pass
 
-func _process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("open_menu"):
 		visible = !visible
 

@@ -1,136 +1,82 @@
 class_name Cat extends Node2D
 
-const CATCOIN = preload("res://scenes/catcoin.tscn")
+signal lured(pos: Vector2)
+
+const CATCOIN: PackedScene = preload("res://scenes/catcoin.tscn")
 
 var flipped: bool = false
 var catid: int
-var dir: Vector2 = Vector2.ZERO
 var is_moving: bool = false
 var payout: float = 1
 var spriteframes: SpriteFrames
 
 var note: int
 var my_beat: int
-var bpm: float
 var registered: bool
+var is_kick: bool
+var is_snare: bool
 var is_cowboy: bool
 var sound: AudioStream
 var original_sound: AudioStream
+var text_color: Color
 
-@onready var emote_label: Label = $EmoteLabel
+@onready var emote_label: CatEmoteLabel = $EmoteLabel
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
-@onready var timer: Timer = $Timer
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 
 func _ready() -> void:
 	original_sound = sound
 	anim_sprite.sprite_frames = spriteframes
 	audio_stream_player_2d.stream = sound
 	audio_stream_player_2d.pitch_scale = 2.0 ** (note/12.0)
-
+	emote_label.text_color = text_color
 	CatData.cats.push_front(self)
+	CatData.cat_positions.push_back(global_position)
 
-func _on_beat(beat: int, measures: Array, wait_time: float) -> void:
-	bpm = wait_time
-	if my_beat not in measures:
-		my_beat = beat
-	if my_beat == beat:
-		_on_my_beat()
-	_update()
+
+func _on_beat_listener_assigned_beat_played() -> void:
+	_on_my_beat()
+
 
 func _on_my_beat() -> void:
-	_pick_random_direction()
-	_emote()
-	_deposit_payout()
 	is_moving = !is_moving
-	_animate()
+	spawn_catcoin()
+
 	for i: int in randi_range(0, 2):
 		await get_tree().process_frame
+
 	if is_cowboy:
-		if Math.coinflip():
-			audio_stream_player_2d.stream = load("res://sounds/cats/meowboy_G.wav")
-		else:
-			audio_stream_player_2d.stream = load("res://sounds/cats/meowboy_B.wav")
+		audio_stream_player_2d.stream = load("uid://dq7bdv4vwnyyn")
+
 	elif audio_stream_player_2d.stream != original_sound:
 		audio_stream_player_2d.stream = original_sound
+
 	audio_stream_player_2d.play()
 
-func _animate() -> void:
-	anim_sprite.stop()
-	anim_sprite.animation = "meow"
-	anim_sprite.frame = 0
-	await Helpers.tree_timer(bpm*2)
-	if is_moving:
-		anim_sprite.play("walk")
-	else:
-		anim_sprite.play("idle")
 
-func _update() -> void:
-	if dir.x < 0.0:
-		anim_sprite.scale.x = -1
-	else:
-		anim_sprite.scale.x = 1
-	if is_moving:
-		for i: int in 2:
-			dir = _avoid_boundaries(dir)
-			var new_pos: Vector2 = global_position + dir
-			var new_pos_x: float = new_pos.x
-			var new_pos_y: float = new_pos.y
-
-			new_pos.x = snappedi(new_pos_x, 1)
-			new_pos.y = snappedi(new_pos_y, 1)
-
-			global_position = new_pos
-			await Helpers.tree_timer(bpm)
-
-func _pick_random_direction() -> void:
-	match Math.randmod(8):
-		0: dir = Vector2.RIGHT
-		1: dir = Vector2.LEFT
-		2: dir = Vector2.DOWN
-		3: dir = Vector2.UP
-		4: dir = Vector2(1, 1)
-		5: dir = Vector2(-1, 1)
-		6: dir = Vector2(1, -1)
-		7: dir = Vector2(-1, -1)
-
-func _avoid_boundaries(_dir: Vector2) -> Vector2:
-	const PADDING: int = 64
-	const START: Vector2 = Vector2(PADDING, PADDING)
-	var end: Vector2 = Vector2(400, 576) - START
-	if global_position.x > end.x:
-		_dir.x = -1
-	if global_position.y > end.y:
-		_dir.y = -1
-	if global_position.x < START.x:
-		_dir.x = 1
-	if global_position.y < START.y:
-		_dir.y = 1
-	return _dir
-
-func _emote() -> void:
-	if is_cowboy:
-		emote_label.text = Emotes.meowboy.pick_random()
-		emote_label.modulate = Color.DARK_RED
-	else:
-		emote_label.text = Emotes.amiguito.pick_random()
-		emote_label.modulate = Color.WHITE
-	emote_label.show()
-	timer.start(2.0)
-
-func _deposit_payout() -> void:
-	var catcoin: Node2D = CATCOIN.instantiate()
-	var tween: Tween = get_tree().create_tween()
-
+func spawn_catcoin() -> void:
+	var catcoin: Catcoin = CATCOIN.instantiate()
+	catcoin.payout = payout
+	catcoin.position.y -= 16
 	add_child(catcoin)
-	tween.tween_property(catcoin, "global_position", catcoin.global_position + Vector2(0, -16), 0.5)
-	tween.tween_callback(_delete_coin.bind(catcoin))
 
-	Coins.deposit(payout)
 
-func _delete_coin(catcoin: Node) -> void:
-	catcoin.queue_free()
+func add_hat(hat: Hat) -> void:
+	is_cowboy = true
+	hat.global_position = anim_sprite.global_position
+	hat.flip_h = anim_sprite.flip_h
+	hat.reparent(anim_sprite)
 
-func _on_timer_timeout() -> void:
-	emote_label.hide()
+
+func remove_hat() -> void:
+	for child: Hat in anim_sprite.get_children():
+		if child is Hat:
+			child.queue_free()
+	if is_cowboy:
+		is_cowboy = false
+
+
+func lure(pos: Vector2) -> void:
+	lured.emit(pos)

@@ -1,25 +1,77 @@
-[gd_scene load_steps=21 format=3 uid="uid://c73ppf6pimc2d"]
+[gd_scene load_steps=41 format=3 uid="uid://c73ppf6pimc2d"]
 
 [ext_resource type="Texture2D" uid="uid://dsfucesjp0ycw" path="res://images/ui/cat_room.png" id="1_8rlch"]
 [ext_resource type="Texture2D" uid="uid://ctinfgsnom6gy" path="res://images/ui/catClickerBG.png" id="1_75y3a"]
 [ext_resource type="Script" path="res://scripts/cat_room.gd" id="1_ufo46"]
 [ext_resource type="Script" path="res://scripts/beat_tracker.gd" id="1_uxrbj"]
-[ext_resource type="PackedScene" uid="uid://d00kyep1e0rt8" path="res://scenes/cat_container.tscn" id="3_bqldb"]
+[ext_resource type="PackedScene" uid="uid://d00kyep1e0rt8" path="res://scenes/buy_cat.tscn" id="3_bqldb"]
 [ext_resource type="Texture2D" uid="uid://edynmib0yvpy" path="res://images/cats/salem.png" id="4_pyokh"]
 [ext_resource type="Texture2D" uid="uid://dupk37c4xx6r6" path="res://images/cats/gandalf/gandalf1.png" id="5_3mmb6"]
 [ext_resource type="SpriteFrames" uid="uid://sji5528v3neh" path="res://spriteframes/salem_spriteframes.tres" id="5_3xfaf"]
+[ext_resource type="Texture2D" uid="uid://buslgyynananu" path="res://images/ui/cat_clicker_button/cat_clicker_button_normal.png" id="5_edgyt"]
 [ext_resource type="SpriteFrames" uid="uid://c8l02ayvtmc8t" path="res://spriteframes/snowball_spriteframes.tres" id="5_srgjj"]
 [ext_resource type="SpriteFrames" uid="uid://bqeaagektmefh" path="res://spriteframes/Gandalf_spriteframes.tres" id="5_tvpmn"]
 [ext_resource type="Texture2D" uid="uid://d20nr5bdb10bv" path="res://images/cats/snowball/snowball1.png" id="6_37ut6"]
 [ext_resource type="SpriteFrames" uid="uid://bm1kk2enljgen" path="res://spriteframes/bob_spriteframes.tres" id="6_ccg7x"]
+[ext_resource type="Texture2D" uid="uid://coek6xj8tdcrc" path="res://images/cats/creampop/creampop1.png" id="6_rx64g"]
+[ext_resource type="Texture2D" uid="uid://biisvujw51r3m" path="res://images/ui/cat_clicker_button/cat_clicker_button_hover.png" id="6_vnfcw"]
+[ext_resource type="SpriteFrames" uid="uid://dan3wdqbf4vl8" path="res://spriteframes/creampop_spriteframes.tres" id="7_4r72u"]
+[ext_resource type="Texture2D" uid="uid://dybj1mq1s0mp2" path="res://images/ui/cat_clicker_button/cat_clicker_button_disabled.png" id="7_84kdk"]
+[ext_resource type="Script" path="res://scripts/buy_tab.gd" id="8_g2mi6"]
 [ext_resource type="PackedScene" uid="uid://dnopqvxxedu2a" path="res://scenes/big_gato.tscn" id="11_nr2te"]
 [ext_resource type="Texture2D" uid="uid://cucxt4oysll5t" path="res://images/cats/omeowri.png" id="12_ijc2m"]
 [ext_resource type="PackedScene" uid="uid://bwc352f3dkopn" path="res://scenes/main_menu.tscn" id="12_tc4in"]
 [ext_resource type="AudioStream" uid="uid://prcg27txatbj" path="res://sounds/cats/nyaa.wav" id="13_obois"]
 [ext_resource type="SpriteFrames" uid="uid://cxoptsu1ysirx" path="res://spriteframes/bootsie_spriteframes.tres" id="16_54vps"]
+[ext_resource type="AudioStream" uid="uid://c6a40yce8n3rn" path="res://sounds/cats/kick2.wav" id="16_opvxu"]
 [ext_resource type="Texture2D" uid="uid://dei5xjecux0pt" path="res://images/cats/cass/cass1.png" id="18_ednrh"]
+[ext_resource type="AudioStream" uid="uid://bfgpk0nvqydh4" path="res://sounds/cats/snare2.wav" id="19_ntqgh"]
 [ext_resource type="SpriteFrames" uid="uid://bci6dida231k4" path="res://spriteframes/cass_spriteframes.tres" id="19_vifqs"]
 [ext_resource type="PackedScene" uid="uid://dwu803jxgvnbh" path="res://cat_coin_display.tscn" id="20_ssxqj"]
+[ext_resource type="PackedScene" uid="uid://dvdrri3hhxbyn" path="res://scenes/buy_hat.tscn" id="25_3uecf"]
+[ext_resource type="Texture2D" uid="uid://b7fiuxcxdkeuq" path="res://images/hats/meowboy_hat.png" id="25_o75ei"]
+[ext_resource type="PackedScene" uid="uid://d62stpahwktt" path="res://scenes/meowboy_hat.tscn" id="26_2hwe5"]
+[ext_resource type="Texture2D" uid="uid://d3gcg3qf38m75" path="res://images/hats/meowboy_hat_pressed.png" id="26_faell"]
+[ext_resource type="Texture2D" uid="uid://drbwnkjy60sx3" path="res://images/hats/meowboy_hat_hover.png" id="26_xlbgr"]
+[ext_resource type="Texture2D" uid="uid://b5aqj6ub8yubk" path="res://images/hats/meowboy_hat_undiscovered.png" id="27_o0rge"]
+[ext_resource type="PackedScene" uid="uid://cmxxcpl3dn5y" path="res://scenes/buy_lure.tscn" id="31_xny6u"]
+
+[sub_resource type="SystemFont" id="SystemFont_i1pcr"]
+font_names = PackedStringArray("C-64")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bcgho"]
+texture = ExtResource("5_edgyt")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0ga6"]
+texture = ExtResource("6_vnfcw")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8o0x0"]
+texture = ExtResource("7_84kdk")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1xqwl"]
+texture = ExtResource("7_84kdk")
+texture_margin_left = 2.0
+texture_margin_top = 4.0
+texture_margin_right = 12.0
+texture_margin_bottom = 2.0
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -50,8 +102,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -13.0
-offset_right = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -80,98 +130,157 @@ custom_minimum_size = Vector2(400, 576)
 layout_mode = 2
 texture = ExtResource("1_8rlch")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CatRoom"]
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer/CatRoom" groups=["hidden_during_intro"]]
+custom_minimum_size = Vector2(128, 544)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("SystemFont_i1pcr")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/tab_selected = SubResource("StyleBoxTexture_bcgho")
+theme_override_styles/tab_hovered = SubResource("StyleBoxTexture_w0ga6")
+theme_override_styles/tab_unselected = SubResource("StyleBoxTexture_8o0x0")
+theme_override_styles/panel = SubResource("StyleBoxTexture_1xqwl")
+tab_alignment = 1
+all_tabs_in_front = true
+
+[node name="cats" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer" node_paths=PackedStringArray("parent")]
 layout_mode = 2
 alignment = 2
+script = ExtResource("8_g2mi6")
+parent = NodePath("..")
 
-[node name="salem" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" instance=ExtResource("3_bqldb")]
+[node name="creampop" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
+unique_name_in_owner = true
+layout_mode = 2
+cost = 130000.0
+payout = 3900.0
+cat_sprite = ExtResource("6_rx64g")
+spriteframes = ExtResource("7_4r72u")
+text_color = Color(0.992172, 0.788464, 0.788464, 1)
+sound = ExtResource("13_obois")
+major_sixth = true
+
+[node name="salem" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
 cost = 12000.0
-payout = 400.0
+payout = 705.0
 cat_sprite = ExtResource("4_pyokh")
 spriteframes = ExtResource("5_3xfaf")
+text_color = Color(0.199802, 0.223239, 0.254994, 1)
 sound = ExtResource("13_obois")
-perfect_fifth = false
 major_seventh = true
 
-[node name="Gandalf" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" instance=ExtResource("3_bqldb")]
+[node name="Gandalf" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
 cost = 1100.0
-payout = 100.0
+payout = 120.0
 cat_sprite = ExtResource("5_3mmb6")
 spriteframes = ExtResource("5_tvpmn")
+text_color = Color(0.545174, 0.57644, 0.686366, 1)
 sound = ExtResource("13_obois")
 major_third = true
-perfect_fifth = false
 
-[node name="snowball" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" instance=ExtResource("3_bqldb")]
+[node name="snowball" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
-cost = 200.0
-payout = 20.0
+cost = 40.0
+payout = 15.0
 cat_sprite = ExtResource("6_37ut6")
 spriteframes = ExtResource("5_srgjj")
 sound = ExtResource("13_obois")
+perfect_fifth = true
 
-[node name="bob" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" groups=["starter_cat"] instance=ExtResource("3_bqldb")]
+[node name="bob" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" groups=["starter_cat"] instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
+visible = true
 layout_mode = 2
-payout = 0.75
 spriteframes = ExtResource("6_ccg7x")
+text_color = Color(0.980453, 0.415717, 0.0390784, 1)
 sound = ExtResource("13_obois")
 unison = true
-perfect_fifth = false
 
-[node name="bootsie" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" instance=ExtResource("3_bqldb")]
+[node name="bootsie" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+is_kick = true
 cost = 12000.0
 payout = 352.5
 cat_sprite = ExtResource("12_ijc2m")
 spriteframes = ExtResource("16_54vps")
+sound = ExtResource("16_opvxu")
 unison = true
-perfect_fifth = false
 
-[node name="cass" parent="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer" instance=ExtResource("3_bqldb")]
+[node name="cass" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+is_snare = true
 cost = 12000.0
 payout = 352.5
 cat_sprite = ExtResource("18_ednrh")
 spriteframes = ExtResource("19_vifqs")
+sound = ExtResource("19_ntqgh")
 minor_second = true
-perfect_fifth = false
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(128, 0)
+[node name="hats" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer" node_paths=PackedStringArray("parent")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
+alignment = 2
+script = ExtResource("8_g2mi6")
+parent = NodePath("..")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="Hat" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/hats" instance=ExtResource("25_3uecf")]
 layout_mode = 2
-size_flags_horizontal = 8
+HAT_SCENE = ExtResource("26_2hwe5")
+cost = 100.0
+hat_normal = ExtResource("25_o75ei")
+hat_hover = ExtResource("26_xlbgr")
+hat_pressed = ExtResource("26_faell")
+hat_undiscovered = ExtResource("27_o0rge")
+emote_library_name = &"meowboy"
+
+[node name="lures" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer" node_paths=PackedStringArray("parent")]
+visible = false
+layout_mode = 2
+alignment = 2
+script = ExtResource("8_g2mi6")
+parent = NodePath("..")
+
+[node name="Lure" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/lures" instance=ExtResource("31_xny6u")]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 480.0
+offset_top = 416.0
+offset_right = 640.0
+offset_bottom = 576.0
+size_flags_horizontal = 10
 size_flags_vertical = 10
+alignment = 2
 
-[node name="BigGato" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="BigGato" type="VBoxContainer" parent="VBoxContainer3"]
 layout_mode = 2
 theme_override_constants/separation = 26
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/VBoxContainer/BigGato"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer3/BigGato"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = -4
 
-[node name="BigGato" parent="HBoxContainer/VBoxContainer2/VBoxContainer/BigGato/VBoxContainer" instance=ExtResource("11_nr2te")]
+[node name="BigGato" parent="VBoxContainer3/BigGato/VBoxContainer" instance=ExtResource("11_nr2te")]
 layout_mode = 2
 
 [node name="MainMenu" parent="." instance=ExtResource("12_tc4in")]
 visible = false
 layout_mode = 1
 
-[node name="CatCoinDisplay" parent="." instance=ExtResource("20_ssxqj")]
+[node name="CatCoinDisplay" parent="." groups=["catcoin_display", "hidden_during_intro"] instance=ExtResource("20_ssxqj")]
+visible = false
+position = Vector2(12, 0)
 
 [node name="BeatTrackerHalf" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -181,10 +290,14 @@ autostart = true
 
 [connection signal="timeout" from="BeatTracker" to="BeatTracker" method="_on_timeout"]
 [connection signal="timeout" from="HBoxContainer/VBoxContainer/CatRoom/PayoutTimer" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_payout_timer_timeout"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/salem" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/Gandalf" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/snowball" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/bob" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/bootsie" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/VBoxContainer/cass" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" method="_on_tab_container_tab_changed"]
+[connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/hats" method="_on_tab_container_tab_changed"]
+[connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/lures" method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/creampop" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/salem" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/Gandalf" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/snowball" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/bob" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/bootsie" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/cass" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
 [connection signal="timeout" from="BeatTrackerHalf" to="BeatTrackerHalf" method="_on_timeout"]

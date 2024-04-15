@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvn3ch0fobyub"]
+
+[ext_resource type="Texture2D" uid="uid://gs77sbd7tit0" path="res://images/ui/catfood.png" id="1_tbu72"]
+[ext_resource type="Script" path="res://scripts/lure.gd" id="2_t2ya4"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = 1
+position = Vector2(2, -2)
+texture = ExtResource("1_tbu72")
+script = ExtResource("2_t2ya4")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 0.117
+autostart = true
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
+[connection signal="timeout" from="UpdateTimer" to="." method="_on_update_timer_timeout"]

@@ -1,5 +1,21 @@
 extends Node
 
+func get_emote_library(library_name: StringName) -> Array[String]:
+	if library_name == &"amiguito":
+		return amiguito
+	elif library_name == &"big_gato":
+		return big_gato
+	elif library_name == &"intro":
+		return intro
+	elif library_name == &"kick":
+		return kick
+	elif library_name == &"snare":
+		return snare
+	elif library_name == &"meowboy":
+		return meowboy
+	else:
+		return [""]
+
 const amiguito: Array[String] = [
 	"xD",
 	":P",
@@ -37,87 +53,102 @@ const amiguito: Array[String] = [
 	"nyaa ~ ~",
 	"NYAAA!!!",
 	"tu tu ru",
+	"who am i",
+	"what am i",
 	"*nuzzles*",
 	"*wuzzles*",
 	"brrr meow",
 	"turi turi",
 	"HUNGRY!!!",
+	"where am i",
 	"TU TU RU!!!",
 	"Catmmunism.",
 	"soy una gata",
+	"MY WIFEEE!!!",
+	"want catfood",
+	"CHECK PLEASE!",
+	"¡Hola amigos!",
 	"hows the wife?",
 	"i hate mondays",
+	"JAJAJAJAJAJAJA",
 	"why do i exist?",
 	"~ neko neko nee! ~",
 	"just hang in there",
+	"TERFs get the wall",
 	"hows it goin fellas?",
 	"long time no see jim",
 	"my wife left meee...ow.",
-	"Goog le Meowrray Bonkchin",
 	"watch out for cucumbers",
+	"Goog le Meowrray Bonkchin",
+	"and then I said 'CHECK PLS!' ",
 	"MEOWMEOWMEOWMEOWMEOWMEOWMEOWMEOWMEOW",
+	"...and THEN I said 'cHheCk plEaSeE!!!'",
+	"¡Vengo con maullidos y mucha comida para gatos!",
 ]
 
 const big_gato: Array[String] = [
 	"MEOW",
 	"PURR",
 	"mEoW",
+	"swag",
 	"M EOW",
 	"mrowr",
 	"MEOW?",
 	"hmm...",
-	"meow zedog",
-	"mmm... meow",
+	"M E O W",
 	"catamari",
-	"swag",
+	"M E O  w",
+	"purrhaps",
+	"thug life",
+	"BEEG GATO",
+	"meow zedog",
+	"hmmmeow...",
+	"mmm... meow",
+	"like a boss",
+	"i'm so 2008",
+	"FELINE GOOD",
 	"boom boom meow",
 	"ur so 2000late",
-	"i'm so 2008",
-	"M E O W",
-	"M E O  w",
 	"I AM A BIG CAT",
 	"PET ME MORE HUMAN",
-	"THEY CALL ME BIG GATO...\n...ya know...\n because of how big I am...",
-	"M E O W  B U T  B I G G E R ",
-	"YES,
-		\nTHIS PLEASES ME.",
-	"I COMMAND YOU
-		\nTO PET ME!",
-	"All your base
-		\nare belong to...
-		\nMEOW",
-	"FELINE GOOD",
 	"u cat'n be furreal",
-	"CAN HAS CHEEZBURGER?",
 	"Live. Laugh. Meow.",
-	"hmmmeow...",
-	"purrhaps",
+	"CAN HAS CHEEZBURGER?",
+	"YES, THIS PLEASES ME.",
 	"Boop my snoot, or else.",
-	"you've cat to be \nkitten me right meow",
-	"like a boss",
-	"thug life",
-	"do i have to\nkeep saying stuff\nafter the intro?"
-]
+	"I COMMAND YOU TO PET ME!",
+	"M E O W  B U T  B I G G E R ",
+	"All your base are belong to... MEOW",
+	"Still need to click for coins I see.",
+	"do i have to keep saying stuff after the intro?",
+	"you've CAT to be KITTEN me right MEOW! JAJAJAJJAJAJA",
+	]
 
 var intro: Array[String] = [
-	"Hello.",
+	## The ""'s are a break in dialogue btw
+	## Couldn't think of a better way to do it lol
 	"meow",
+	"Hello.",
+	"",
 	"",
 	"'round these parts...",
-	"they call me Gato",
+	"...they call me Gato",
 	"meow",
 	"",
 	"in this game",
 	"meow",
 	"you collect",
 	"",
-	"meow",
+	"[meows in Spanish]",
 	"",
 	"",
 	"CATS!",
+	"",
 	"oh look",
+	"",
 	"heh",
 	"hey there lil guy",
+	"",
 	"mreowr...",
 	"",
 	"and give them...",
@@ -137,20 +168,34 @@ var intro: Array[String] = [
 	]
 
 var meowboy: Array[String] = [
+	"M'eow lady...",
+	"Dammit Dutch!",
 	"Meowdy, pawdner.",
 	"Excuse meow, miss",
-	"M'eow lady...",
-	"We're meow ghosts\nthan people...",
-	"Dammit Dutch!",
 	"Hey there cowpoke",
-	"You, sir, are a fish.",
-	"all them years, dutch...",
-	"THARS A SNAKE IN MEOW BOOT",
-	"wHERE's thAt DaMN\nH O R S E",
-	"Name's Arthpurr Meowgan.",
-	"Just one meowr score.",
 	"Outlaws Fur Life.",
-	"Yep. Sure is nice.",
 	"Hands to the sky!",
 	"WHAT IN TARNATION",
+	"Yep. Sure is nice.",
+	"You, sir, are a fish.",
+	"Just one meowr score.",
+	"all them years, dutch...",
+	"Name's Arthpurr Meowgan.",
+	"THARS A SNAKE IN MEOW BOOT",
+	"wHERE's thAt DaMN H~O~R~S~E",
+	"We're meow ghosts than people...",
+]
+
+var kick: Array[String] = [
+	"BOOTS",
+	"BOOTS 'n'",
+	"BOOM",
+	"THUD"
+]
+
+var snare: Array [String] = [
+	"CATS",
+	"CRASH",
+	"KSHHH",
+	"PSHHH",
 ]

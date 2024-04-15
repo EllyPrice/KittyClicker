@@ -1,37 +1,115 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq7lvx1x7avly"]
+[gd_scene load_steps=23 format=3 uid="uid://cq7lvx1x7avly"]
 
-[ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/ui/stackable_catcoin.png" id="1_mq37m"]
-[ext_resource type="Script" path="res://scenes/catcoin.gd" id="2_x3cnd"]
-[ext_resource type="AudioStream" uid="uid://dcjfd8qacu1oy" path="res://sounds/coins/coin1.wav" id="3_twvxo"]
+[ext_resource type="Texture2D" uid="uid://gk1n43ej1tnu" path="res://images/catcoin/catcoin_spinny1.png" id="1_bhsr4"]
+[ext_resource type="Texture2D" uid="uid://4j64fk0djcqu" path="res://images/catcoin/catcoin_spinny2.png" id="2_ddyqi"]
+[ext_resource type="Script" path="res://scripts/catcoin.gd" id="2_mt3ni"]
+[ext_resource type="Texture2D" uid="uid://b3vgkdi2d7d65" path="res://images/catcoin/catcoin_spinny3.png" id="3_kr4r5"]
+[ext_resource type="Texture2D" uid="uid://clg3rv76jnsx4" path="res://images/catcoin/catcoin_spinny4.png" id="4_72rtm"]
+[ext_resource type="Texture2D" uid="uid://b1xbca0e70xo" path="res://images/catcoin/catcoin_spinny5.png" id="5_u8ttg"]
+[ext_resource type="Texture2D" uid="uid://b0vvdnk8uvu03" path="res://images/catcoin/catcoin_spinny6.png" id="6_8s8kp"]
+[ext_resource type="Texture2D" uid="uid://c1d6jdybky7ey" path="res://images/catcoin/catcoin_spinny7.png" id="7_rfbgg"]
+[ext_resource type="Texture2D" uid="uid://dm8toph518wid" path="res://images/catcoin/catcoin_spinny8.png" id="8_80e08"]
+[ext_resource type="Texture2D" uid="uid://5ktn4vyoyjul" path="res://images/catcoin/catcoin_spinny9.png" id="9_f6dy6"]
+[ext_resource type="Texture2D" uid="uid://det6ibtj3oj7c" path="res://images/catcoin/catcoin_spinny10.png" id="10_5cfxm"]
+[ext_resource type="Texture2D" uid="uid://csahbepllotl1" path="res://images/catcoin/catcoin_spinny11.png" id="11_cyri5"]
+[ext_resource type="Texture2D" uid="uid://dsy20efhh7sah" path="res://images/catcoin/catcoin_spinny12.png" id="12_tkm58"]
+[ext_resource type="Texture2D" uid="uid://cwvq05f4hosfx" path="res://images/catcoin/catcoin_spinny13.png" id="13_lpj5w"]
+[ext_resource type="Texture2D" uid="uid://m8mwfpifqm4p" path="res://images/catcoin/catcoin_spinny14.png" id="14_euvul"]
+[ext_resource type="Texture2D" uid="uid://cj2pt4hg50rl3" path="res://images/catcoin/catcoin_spinny15.png" id="15_wt4ki"]
+[ext_resource type="Texture2D" uid="uid://foxgbnnmge5y" path="res://images/catcoin/catcoin_spinny16.png" id="16_twvng"]
+[ext_resource type="Texture2D" uid="uid://ch8y457pouh4f" path="res://images/catcoin/catcoin_spinny17.png" id="17_41phd"]
+[ext_resource type="Texture2D" uid="uid://dubvknv6b4fvm" path="res://images/catcoin/catcoin_spinny18.png" id="18_n20yr"]
+[ext_resource type="AudioStream" uid="uid://dcjfd8qacu1oy" path="res://sounds/coins/coin1.wav" id="20_ivurw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7jdh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mq37m")
+"texture": ExtResource("1_bhsr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ddyqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kr4r5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_72rtm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u8ttg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8s8kp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rfbgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_80e08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_f6dy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5cfxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cyri5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tkm58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lpj5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_euvul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wt4ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_twvng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_41phd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n20yr")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 60.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1bgb"]
+size = Vector2(15, 16)
+
 [node name="Coin" type="AnimatedSprite2D"]
-show_behind_parent = true
 position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_i7jdh")
-script = ExtResource("2_x3cnd")
+autoplay = "default"
+frame = 15
+frame_progress = 0.559895
+script = ExtResource("2_mt3ni")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_twvxo")
-volume_db = -24.0
+stream = ExtResource("20_ivurw")
+volume_db = -18.0
 autoplay = true
-attenuation = 4.43828
+panning_strength = 0.2
 bus = &"Coins"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.117
+wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, -1.19209e-07)
+shape = SubResource("RectangleShape2D_l1bgb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
