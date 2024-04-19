@@ -1,11 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://c73ppf6pimc2d"]
+[gd_scene load_steps=46 format=3 uid="uid://c73ppf6pimc2d"]
 
 [ext_resource type="Texture2D" uid="uid://dsfucesjp0ycw" path="res://images/ui/cat_room.png" id="1_8rlch"]
 [ext_resource type="Texture2D" uid="uid://ctinfgsnom6gy" path="res://images/ui/catClickerBG.png" id="1_75y3a"]
 [ext_resource type="Script" path="res://scripts/cat_room.gd" id="1_ufo46"]
 [ext_resource type="Script" path="res://scripts/beat_tracker.gd" id="1_uxrbj"]
 [ext_resource type="PackedScene" uid="uid://d00kyep1e0rt8" path="res://scenes/buy_cat.tscn" id="3_bqldb"]
-[ext_resource type="Texture2D" uid="uid://edynmib0yvpy" path="res://images/cats/salem.png" id="4_pyokh"]
+[ext_resource type="Texture2D" uid="uid://edynmib0yvpy" path="res://images/cats/originals/salem.png" id="4_pyokh"]
 [ext_resource type="Texture2D" uid="uid://dupk37c4xx6r6" path="res://images/cats/gandalf/gandalf1.png" id="5_3mmb6"]
 [ext_resource type="SpriteFrames" uid="uid://sji5528v3neh" path="res://spriteframes/salem_spriteframes.tres" id="5_3xfaf"]
 [ext_resource type="Texture2D" uid="uid://buslgyynananu" path="res://images/ui/cat_clicker_button/cat_clicker_button_normal.png" id="5_edgyt"]
@@ -18,22 +18,27 @@
 [ext_resource type="SpriteFrames" uid="uid://dan3wdqbf4vl8" path="res://spriteframes/creampop_spriteframes.tres" id="7_4r72u"]
 [ext_resource type="Texture2D" uid="uid://dybj1mq1s0mp2" path="res://images/ui/cat_clicker_button/cat_clicker_button_disabled.png" id="7_84kdk"]
 [ext_resource type="Script" path="res://scripts/buy_tab.gd" id="8_g2mi6"]
+[ext_resource type="Texture2D" uid="uid://dc53e0wtdy51m" path="res://images/cats/yarney/yarney1.png" id="10_eab32"]
+[ext_resource type="Texture2D" uid="uid://b6ytg53ovj55j" path="res://images/cats/john_meown/john_meown1.png" id="10_n068r"]
+[ext_resource type="SpriteFrames" uid="uid://ck646musm5kwd" path="res://spriteframes/yarney_spriteframes.tres" id="11_882ba"]
 [ext_resource type="PackedScene" uid="uid://dnopqvxxedu2a" path="res://scenes/big_gato.tscn" id="11_nr2te"]
-[ext_resource type="Texture2D" uid="uid://cucxt4oysll5t" path="res://images/cats/omeowri.png" id="12_ijc2m"]
+[ext_resource type="SpriteFrames" uid="uid://bx7qyrk78uk4b" path="res://spriteframes/john_meown_spriteframes.tres" id="11_s61pk"]
+[ext_resource type="Texture2D" uid="uid://cucxt4oysll5t" path="res://images/cats/originals/omeowri.png" id="12_ijc2m"]
+[ext_resource type="AudioStream" uid="uid://c587qxopa3p1w" path="res://sounds/cats/nyaa_high_pitch_corrected.wav" id="12_j2uqd"]
 [ext_resource type="PackedScene" uid="uid://bwc352f3dkopn" path="res://scenes/main_menu.tscn" id="12_tc4in"]
-[ext_resource type="AudioStream" uid="uid://prcg27txatbj" path="res://sounds/cats/nyaa.wav" id="13_obois"]
 [ext_resource type="SpriteFrames" uid="uid://cxoptsu1ysirx" path="res://spriteframes/bootsie_spriteframes.tres" id="16_54vps"]
-[ext_resource type="AudioStream" uid="uid://c6a40yce8n3rn" path="res://sounds/cats/kick2.wav" id="16_opvxu"]
 [ext_resource type="Texture2D" uid="uid://dei5xjecux0pt" path="res://images/cats/cass/cass1.png" id="18_ednrh"]
-[ext_resource type="AudioStream" uid="uid://bfgpk0nvqydh4" path="res://sounds/cats/snare2.wav" id="19_ntqgh"]
 [ext_resource type="SpriteFrames" uid="uid://bci6dida231k4" path="res://spriteframes/cass_spriteframes.tres" id="19_vifqs"]
 [ext_resource type="PackedScene" uid="uid://dwu803jxgvnbh" path="res://cat_coin_display.tscn" id="20_ssxqj"]
 [ext_resource type="PackedScene" uid="uid://dvdrri3hhxbyn" path="res://scenes/buy_hat.tscn" id="25_3uecf"]
+[ext_resource type="AudioStream" uid="uid://bxntug5ap03f1" path="res://sounds/cats/nyaa_pitch_corrected.wav" id="25_o61hh"]
 [ext_resource type="Texture2D" uid="uid://b7fiuxcxdkeuq" path="res://images/hats/meowboy_hat.png" id="25_o75ei"]
 [ext_resource type="PackedScene" uid="uid://d62stpahwktt" path="res://scenes/meowboy_hat.tscn" id="26_2hwe5"]
 [ext_resource type="Texture2D" uid="uid://d3gcg3qf38m75" path="res://images/hats/meowboy_hat_pressed.png" id="26_faell"]
 [ext_resource type="Texture2D" uid="uid://drbwnkjy60sx3" path="res://images/hats/meowboy_hat_hover.png" id="26_xlbgr"]
+[ext_resource type="AudioStream" uid="uid://fgfwc2qd3nm" path="res://sounds/cats/nyaa_kick.wav" id="27_csuhs"]
 [ext_resource type="Texture2D" uid="uid://b5aqj6ub8yubk" path="res://images/hats/meowboy_hat_undiscovered.png" id="27_o0rge"]
+[ext_resource type="AudioStream" uid="uid://qojqy4xjy3j" path="res://sounds/cats/nyaa_snare.wav" id="30_q0iql"]
 [ext_resource type="PackedScene" uid="uid://cmxxcpl3dn5y" path="res://scenes/buy_lure.tscn" id="31_xny6u"]
 
 [sub_resource type="SystemFont" id="SystemFont_i1pcr"]
@@ -150,79 +155,110 @@ alignment = 2
 script = ExtResource("8_g2mi6")
 parent = NodePath("..")
 
+[node name="john_meown" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
+unique_name_in_owner = true
+layout_mode = 2
+buy_action = &"buy_john_meown"
+cost = 2e+07
+payout = 117000.0
+cat_sprite = ExtResource("10_n068r")
+spriteframes = ExtResource("11_s61pk")
+text_color = Color(0.992172, 0.788464, 0.788464, 1)
+sound = ExtResource("12_j2uqd")
+major_sixth = true
+
+[node name="yarney" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
+unique_name_in_owner = true
+layout_mode = 2
+buy_action = &"buy_yarney"
+cost = 1.4e+06
+payout = 21000.0
+cat_sprite = ExtResource("10_eab32")
+spriteframes = ExtResource("11_882ba")
+text_color = Color(0.992172, 0.788464, 0.788464, 1)
+sound = ExtResource("12_j2uqd")
+perfect_fourth = true
+
 [node name="creampop" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_creampop"
 cost = 130000.0
 payout = 3900.0
 cat_sprite = ExtResource("6_rx64g")
 spriteframes = ExtResource("7_4r72u")
 text_color = Color(0.992172, 0.788464, 0.788464, 1)
-sound = ExtResource("13_obois")
-major_sixth = true
+sound = ExtResource("12_j2uqd")
+major_second = true
 
 [node name="salem" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_salem"
 cost = 12000.0
 payout = 705.0
 cat_sprite = ExtResource("4_pyokh")
 spriteframes = ExtResource("5_3xfaf")
 text_color = Color(0.199802, 0.223239, 0.254994, 1)
-sound = ExtResource("13_obois")
+sound = ExtResource("25_o61hh")
 major_seventh = true
 
 [node name="Gandalf" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_gandalf"
 cost = 1100.0
 payout = 120.0
 cat_sprite = ExtResource("5_3mmb6")
 spriteframes = ExtResource("5_tvpmn")
 text_color = Color(0.545174, 0.57644, 0.686366, 1)
-sound = ExtResource("13_obois")
-major_third = true
+sound = ExtResource("25_o61hh")
+perfect_fifth = true
 
 [node name="snowball" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_snowball"
 cost = 40.0
 payout = 15.0
 cat_sprite = ExtResource("6_37ut6")
 spriteframes = ExtResource("5_srgjj")
-sound = ExtResource("13_obois")
-perfect_fifth = true
+sound = ExtResource("25_o61hh")
+major_third = true
 
 [node name="bob" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" groups=["starter_cat"] instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 visible = true
 layout_mode = 2
+buy_action = &"buy_bob"
 spriteframes = ExtResource("6_ccg7x")
 text_color = Color(0.980453, 0.415717, 0.0390784, 1)
-sound = ExtResource("13_obois")
+sound = ExtResource("25_o61hh")
 unison = true
 
 [node name="bootsie" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_bootsie"
 is_kick = true
 cost = 12000.0
 payout = 352.5
 cat_sprite = ExtResource("12_ijc2m")
 spriteframes = ExtResource("16_54vps")
-sound = ExtResource("16_opvxu")
+sound = ExtResource("27_csuhs")
 unison = true
 
 [node name="cass" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" instance=ExtResource("3_bqldb")]
 unique_name_in_owner = true
 layout_mode = 2
+buy_action = &"buy_cass"
 is_snare = true
 cost = 12000.0
 payout = 352.5
 cat_sprite = ExtResource("18_ednrh")
 spriteframes = ExtResource("19_vifqs")
-sound = ExtResource("19_ntqgh")
-minor_second = true
+sound = ExtResource("30_q0iql")
+unison = true
 
 [node name="hats" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/CatRoom/TabContainer" node_paths=PackedStringArray("parent")]
 visible = false
@@ -293,6 +329,8 @@ autostart = true
 [connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats" method="_on_tab_container_tab_changed"]
 [connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/hats" method="_on_tab_container_tab_changed"]
 [connection signal="tab_changed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer" to="HBoxContainer/VBoxContainer/CatRoom/TabContainer/lures" method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/john_meown" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/yarney" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/creampop" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/salem" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/CatRoom/TabContainer/cats/Gandalf" to="HBoxContainer/VBoxContainer/CatRoom" method="_on_cat_container_pressed"]

@@ -1,14 +1,20 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dan3wdqbf4vl8"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://dan3wdqbf4vl8"]
 
 [ext_resource type="Texture2D" uid="uid://coek6xj8tdcrc" path="res://images/cats/creampop/creampop1.png" id="1_ls216"]
 [ext_resource type="Texture2D" uid="uid://72l6qhhitliw" path="res://images/cats/creampop/creampop2.png" id="2_fotcf"]
 [ext_resource type="Texture2D" uid="uid://mxcph2ixhw66" path="res://images/cats/creampop/creampop3.png" id="3_2fitw"]
+[ext_resource type="Texture2D" uid="uid://jb8k6gdca5ii" path="res://images/cats/creampop/creampop10.png" id="3_qgmgm"]
 [ext_resource type="Texture2D" uid="uid://0ggmn3c1vifm" path="res://images/cats/creampop/creampop4.png" id="4_fbb36"]
 [ext_resource type="Texture2D" uid="uid://cyrsnw6vpycgl" path="res://images/cats/creampop/creampop5.png" id="5_3i66a"]
 [ext_resource type="Texture2D" uid="uid://dr4vl610avkv2" path="res://images/cats/creampop/creampop6.png" id="6_wk2ie"]
 [ext_resource type="Texture2D" uid="uid://cncwkh8yog7k8" path="res://images/cats/creampop/creampop7.png" id="7_p2p4e"]
 [ext_resource type="Texture2D" uid="uid://1o4v0u7svknk" path="res://images/cats/creampop/creampop8.png" id="8_k10pi"]
 [ext_resource type="Texture2D" uid="uid://cktc3qk5xq8pf" path="res://images/cats/creampop/creampop9.png" id="9_wlpr0"]
+[ext_resource type="Texture2D" uid="uid://hs6owocu2dke" path="res://images/cats/creampop/creampop11.png" id="11_341uc"]
+[ext_resource type="Texture2D" uid="uid://d0u5tjuvrvx0" path="res://images/cats/creampop/creampop12.png" id="12_em2h8"]
+[ext_resource type="Texture2D" uid="uid://d2d425tjeg6rm" path="res://images/cats/creampop/creampop13.png" id="13_7o32w"]
+[ext_resource type="Texture2D" uid="uid://cxkd5nbiw5xrx" path="res://images/cats/creampop/creampop14.png" id="14_ng38o"]
+[ext_resource type="Texture2D" uid="uid://b1npnmecn12g2" path="res://images/cats/creampop/creampop15.png" id="15_r6jvo"]
 
 [resource]
 animations = [{
@@ -21,6 +27,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
+"speed": 8.52
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qgmgm")
+}],
+"loop": true,
+"name": &"idle_up",
 "speed": 8.52
 }, {
 "frames": [{
@@ -50,7 +64,30 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_wlpr0")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
+"speed": 8.52
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_341uc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_em2h8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7o32w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_341uc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ng38o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_r6jvo")
+}],
+"loop": true,
+"name": &"walk_up",
 "speed": 8.52
 }]

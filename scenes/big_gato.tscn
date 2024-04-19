@@ -101,14 +101,14 @@ action_mode = 0
 shortcut = SubResource("Shortcut_6p6sk")
 flat = true
 
-[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(80, 80)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_edmbm")
 animation = &"idle"
 
-[node name="CoinSpawner" type="Node2D" parent="AnimSprite"]
+[node name="CoinSpawner" type="Node2D" parent="AnimatedSprite2D"]
 unique_name_in_owner = true
 show_behind_parent = true
 position = Vector2(-4, 4)
@@ -137,8 +137,8 @@ horizontal_alignment = 1
 [node name="NyaaKittySound" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("13_e7aj6")
-volume_db = -2.453
 panning_strength = 0.0
+bus = &"Cats"
 
 [connection signal="timeout" from="IntroTimer" to="." method="_on_intro_timer_timeout"]
 [connection signal="timeout" from="AutoPetTimer" to="." method="_on_auto_pet_timer_timeout"]
@@ -147,4 +147,4 @@ panning_strength = 0.0
 [connection signal="mouse_entered" from="PetButton" to="." method="_on_pet_button_mouse_entered"]
 [connection signal="mouse_exited" from="PetButton" to="." method="_on_pet_button_mouse_exited"]
 [connection signal="pressed" from="PetButton" to="." method="_on_pet_button_pressed"]
-[connection signal="animation_finished" from="AnimSprite" to="." method="_on_anim_sprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]

@@ -25,7 +25,6 @@ var text_color: Color
 @onready var shadow: Sprite2D = $Shadow
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-
 func _ready() -> void:
 	original_sound = sound
 	anim_sprite.sprite_frames = spriteframes
@@ -34,11 +33,12 @@ func _ready() -> void:
 	emote_label.text_color = text_color
 	CatData.cats.push_front(self)
 	CatData.cat_positions.push_back(global_position)
-
+	if is_kick or is_snare:
+		audio_stream_player_2d.bus = &"Drums"
+		audio_stream_player_2d.volume_db = linear_to_db(1.0)
 
 func _on_beat_listener_assigned_beat_played() -> void:
 	_on_my_beat()
-
 
 func _on_my_beat() -> void:
 	is_moving = !is_moving
@@ -48,7 +48,7 @@ func _on_my_beat() -> void:
 		await get_tree().process_frame
 
 	if is_cowboy:
-		audio_stream_player_2d.stream = load("uid://dq7bdv4vwnyyn")
+		audio_stream_player_2d.stream = load("res://sounds/cats/meowboy_with_nyaa.wav")
 
 	elif audio_stream_player_2d.stream != original_sound:
 		audio_stream_player_2d.stream = original_sound
@@ -63,15 +63,19 @@ func spawn_catcoin() -> void:
 	add_child(catcoin)
 
 
-func add_hat(hat: Hat) -> void:
+func add_hat(HAT_SCENE: PackedScene) -> void:
 	is_cowboy = true
-	hat.global_position = anim_sprite.global_position
+	var hat: Hat = HAT_SCENE.instantiate()
+	hat.is_in_hand = false
+	#hat.global_position = anim_sprite.global_position
 	hat.flip_h = anim_sprite.flip_h
-	hat.reparent(anim_sprite)
-
+	if hat.get_parent():
+		hat.reparent(anim_sprite)
+	else:
+		anim_sprite.add_child(hat)
 
 func remove_hat() -> void:
-	for child: Hat in anim_sprite.get_children():
+	for child: Node in anim_sprite.get_children():
 		if child is Hat:
 			child.queue_free()
 	if is_cowboy:

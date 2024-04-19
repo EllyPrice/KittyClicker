@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0okr388cgi7y"]
+
+[ext_resource type="Texture2D" uid="uid://bm8qygy1tc681" path="res://images/ui/check_box_pressed.png" id="1_uc7uc"]
+[ext_resource type="Texture2D" uid="uid://vwtjtp0tkere" path="res://images/ui/check_box_normal.png" id="2_4x24i"]
+[ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/catcoin/stackable_catcoin.png" id="3_itl1n"]
+[ext_resource type="Texture2D" uid="uid://ivefao316qvk" path="res://images/ui/meow_bar/meow_bar_under.png" id="4_8001q"]
+[ext_resource type="Script" path="res://scripts/volume_slider.gd" id="4_prge5"]
+[ext_resource type="Texture2D" uid="uid://bdp213rqo6l61" path="res://images/ui/meow_bar/meow_bar_progress.png" id="5_fur6v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w40mx"]
+texture = ExtResource("4_8001q")
+texture_margin_left = 3.0
+texture_margin_right = 3.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erh77"]
+texture = ExtResource("5_fur6v")
+texture_margin_left = 3.0
+texture_margin_right = 3.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[node name="VolumeSlider" type="HSlider"]
+custom_minimum_size = Vector2(320, 32)
+size_flags_horizontal = 10
+theme_override_icons/grabber = ExtResource("1_uc7uc")
+theme_override_icons/grabber_highlight = ExtResource("2_4x24i")
+theme_override_icons/tick = ExtResource("3_itl1n")
+theme_override_styles/slider = SubResource("StyleBoxTexture_w40mx")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_erh77")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_erh77")
+max_value = 1.0
+step = 0.01
+value = 1.0
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("4_prge5")
+
+[connection signal="drag_ended" from="." to="." method="_on_drag_ended"]
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

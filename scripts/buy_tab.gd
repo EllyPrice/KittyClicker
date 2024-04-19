@@ -3,6 +3,7 @@ class_name BuyTab extends VBoxContainer
 @export var parent: TabContainer
 var parent_tab_idx: int
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var parents_child_count: int = parent.get_child_count()

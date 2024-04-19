@@ -37,6 +37,7 @@ func _on_buy_button_pressed() -> void:
 		hat.global_position = get_global_mouse_position()
 		hat.is_in_hand = true
 		hat.cost = cost
+		hat.HAT_SCENE = HAT_SCENE
 
 		sold_instance_id = hat.get_instance_id()
 

@@ -1,11 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwc352f3dkopn"]
+[gd_scene load_steps=15 format=3 uid="uid://bwc352f3dkopn"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_lr4p2"]
+[ext_resource type="Script" path="res://scripts/settings.gd" id="2_2u8uc"]
+[ext_resource type="LabelSettings" uid="uid://cf0gsemld8v8q" path="res://themes/gameboy_label_settings.tres" id="3_2jf6w"]
+[ext_resource type="Texture2D" uid="uid://c44fmp0ht3fik" path="res://images/ui/checkbox_checked.png" id="3_2n8w3"]
 [ext_resource type="LabelSettings" uid="uid://daq1xwj0xrxvn" path="res://themes/smol_label_setting.tres" id="3_lhtdg"]
 [ext_resource type="Script" path="res://scripts/cheatcodes.gd" id="4_1qxh8"]
+[ext_resource type="Texture2D" uid="uid://6fcphs5n2p3n" path="res://images/ui/checkbox_unchecked.png" id="4_uahfl"]
+[ext_resource type="PackedScene" uid="uid://c0okr388cgi7y" path="res://scenes/volume_slider.tscn" id="5_4guu1"]
+[ext_resource type="Texture2D" uid="uid://chls47akfvh3i" path="res://images/ui/cat_adoption_center/cat_adoption_center_normal.png" id="5_eiv4u"]
 [ext_resource type="FontFile" uid="uid://dve7xy45cle31" path="res://fonts/Early GameBoy.ttf" id="5_ilaeu"]
+[ext_resource type="Script" path="res://scripts/volume_db_label.gd" id="6_s08gd"]
+[ext_resource type="Script" path="res://scripts/toggle_focus_loss_pausing.gd" id="10_tyr2c"]
+[ext_resource type="Texture2D" uid="uid://bq7a1ivifq5fn" path="res://images/cats/zoomba.png" id="11_72586"]
+[ext_resource type="Script" path="res://scripts/toggle_animations.gd" id="11_k81ud"]
 
 [node name="MainMenu" type="TabContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(0, 288)
 anchors_preset = 12
 anchor_top = 1.0
@@ -14,9 +25,167 @@ anchor_bottom = 1.0
 offset_top = -75.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_ilaeu")
+theme_override_font_sizes/font_size = 8
 script = ExtResource("1_lr4p2")
 
+[node name="Settings" type="AspectRatioContainer" parent="."]
+process_mode = 3
+layout_mode = 2
+script = ExtResource("2_2u8uc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+process_mode = 3
+layout_mode = 2
+
+[node name="AudioCategoryLabel" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "AUDIO"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HBoxContainer" parent="Settings/VBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="VolumeSliderLabel" type="Label" parent="Settings/VBoxContainer/Volume"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Main"
+label_settings = ExtResource("3_2jf6w")
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Settings/VBoxContainer/Volume" instance=ExtResource("5_4guu1")]
+layout_mode = 2
+
+[node name="dBLabel" type="Label" parent="Settings/VBoxContainer/Volume"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0dB"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 3
+script = ExtResource("6_s08gd")
+
+[node name="CatsVolume" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VolumeSliderLabel" type="Label" parent="Settings/VBoxContainer/CatsVolume"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Cats"
+label_settings = ExtResource("3_2jf6w")
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Settings/VBoxContainer/CatsVolume" instance=ExtResource("5_4guu1")]
+layout_mode = 2
+audio_bus = &"Cats"
+
+[node name="dBLabel" type="Label" parent="Settings/VBoxContainer/CatsVolume"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0dB"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 3
+script = ExtResource("6_s08gd")
+
+[node name="CoinsVolume" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VolumeSliderLabel" type="Label" parent="Settings/VBoxContainer/CoinsVolume"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Coins"
+label_settings = ExtResource("3_2jf6w")
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Settings/VBoxContainer/CoinsVolume" instance=ExtResource("5_4guu1")]
+layout_mode = 2
+value = 0.5
+audio_bus = &"Coins"
+
+[node name="dBLabel" type="Label" parent="Settings/VBoxContainer/CoinsVolume"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0dB"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 3
+script = ExtResource("6_s08gd")
+
+[node name="DrumsVolume" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VolumeSliderLabel" type="Label" parent="Settings/VBoxContainer/DrumsVolume"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Drums"
+label_settings = ExtResource("3_2jf6w")
+vertical_alignment = 1
+
+[node name="VolumeSlider" parent="Settings/VBoxContainer/DrumsVolume" instance=ExtResource("5_4guu1")]
+layout_mode = 2
+audio_bus = &"Drums"
+
+[node name="dBLabel" type="Label" parent="Settings/VBoxContainer/DrumsVolume"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0dB"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 3
+script = ExtResource("6_s08gd")
+
+[node name="HSeparator" type="HSeparator" parent="Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="PerformanceCategoryLabel" type="Label" parent="Settings/VBoxContainer"]
+layout_mode = 2
+text = "PERFORMANCE"
+label_settings = ExtResource("3_2jf6w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToggleFocusLossPausing" type="CheckButton" parent="Settings/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ilaeu")
+theme_override_font_sizes/font_size = 8
+theme_override_icons/checked = ExtResource("3_2n8w3")
+theme_override_icons/unchecked = ExtResource("4_uahfl")
+text = "PAUSE GAME IF WINDOW IS NOT IN FOCUS"
+icon = ExtResource("5_eiv4u")
+alignment = 2
+script = ExtResource("10_tyr2c")
+
+[node name="ToggleAnimations" type="CheckButton" parent="Settings/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_ilaeu")
+theme_override_font_sizes/font_size = 8
+theme_override_icons/checked = ExtResource("3_2n8w3")
+theme_override_icons/unchecked = ExtResource("4_uahfl")
+button_pressed = true
+text = "Toggle Cat Animations"
+icon = ExtResource("11_72586")
+alignment = 2
+script = ExtResource("11_k81ud")
+
 [node name="Cheatcodes" type="AspectRatioContainer" parent="."]
+visible = false
 layout_mode = 2
 script = ExtResource("4_1qxh8")
 
@@ -43,5 +212,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("5_ilaeu")
 placeholder_text = "type amount here"
 
+[connection signal="value_changed" from="Settings/VBoxContainer/Volume/VolumeSlider" to="Settings/VBoxContainer/Volume/dBLabel" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/CatsVolume/VolumeSlider" to="Settings/VBoxContainer/CatsVolume/dBLabel" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/CoinsVolume/VolumeSlider" to="Settings/VBoxContainer/CoinsVolume/dBLabel" method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Settings/VBoxContainer/DrumsVolume/VolumeSlider" to="Settings/VBoxContainer/DrumsVolume/dBLabel" method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="Settings/VBoxContainer/ToggleFocusLossPausing" to="Settings/VBoxContainer/ToggleFocusLossPausing" method="_on_toggled"]
+[connection signal="toggled" from="Settings/VBoxContainer/ToggleAnimations" to="Settings/VBoxContainer/ToggleAnimations" method="_on_toggled"]
 [connection signal="text_submitted" from="Cheatcodes/VBoxContainer/EnterCheatcodeField" to="Cheatcodes" method="_on_enter_cheatcode_field_text_submitted"]
 [connection signal="text_submitted" from="Cheatcodes/VBoxContainer/MoneyExploitField" to="Cheatcodes" method="_on_money_exploit_field_text_submitted"]

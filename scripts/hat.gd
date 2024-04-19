@@ -2,9 +2,9 @@ extends Sprite2D
 class_name Hat
 
 var is_in_hand: bool
-#var hat_scene: PackedScene = preload("res://scenes/meowboy_hat.tscn")
 var cost: float
 var emote_library_name: StringName
+var HAT_SCENE: PackedScene
 
 func _process(_delta: float) -> void:
 	if is_in_hand:
@@ -20,7 +20,8 @@ func _process(_delta: float) -> void:
 						get_tree().call_group("hat_sellers", "hat_found_cat", get_instance_id())
 						Coins.withdraw(cost)
 						is_in_hand = false
-						cat.add_hat(self)
+						cat.add_hat(HAT_SCENE)
 
 func get_emote_library() -> Array[String]:
 	return Emotes.get_emote_library(emote_library_name)
+

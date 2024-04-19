@@ -2,6 +2,7 @@ extends HBoxContainer
 
 @onready var payout_timer: Timer = %PayoutTimer
 
+
 func _on_cat_container_pressed(cat: Cat) -> void:
 	set_cat_vars(cat)
 	add_child(cat)

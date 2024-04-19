@@ -31,8 +31,10 @@ func update() -> void:
 	var new_text: String = "%s catcoins" % Math.format_large_number(Coins.amount)
 	if new_text != last_text:
 		label.text = "%s catcoins" % Math.format_large_number(Coins.amount)
-		await Helpers.tree_timer(.1)
+		await tree_timer(.1).timeout
 
+func tree_timer(wait_time: float) -> SceneTreeTimer:
+	return get_tree().create_timer(wait_time)
 
 func animate_and_play_sound() -> void:
 	var tween: Tween = get_tree().create_tween()

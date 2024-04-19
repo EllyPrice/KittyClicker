@@ -1,6 +1,6 @@
 extends MarginContainer
 
-@onready var anim_sprite: AnimatedSprite2D = %AnimSprite
+@onready var anim_sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var emote_label: Label = %EmoteLabel
 @onready var pet_kitty_button: Button = %PetButton
 @onready var sleep_timer: Timer = %SleepTimer
@@ -39,7 +39,6 @@ func _input(event: InputEvent) -> void:
 			var tween: Tween = get_tree().create_tween()
 			tween.tween_property(self, "global_position", original_position, 1.0)
 
-
 func _on_pet_button_pressed() -> void:
 	pet()
 	auto_pet_timer.start(0.468)
@@ -67,9 +66,12 @@ func _on_anim_sprite_animation_finished() -> void:
 
 func _on_pet_button_mouse_entered() -> void:
 	pet_label.show()
-	await Helpers.tree_timer(1.0)
+	await tree_timer(1.0).timeout
 	pet_label.hide()
 
+
+func tree_timer(wait_time: float) -> SceneTreeTimer:
+	return get_tree().create_timer(wait_time)
 
 func _on_pet_button_mouse_exited() -> void:
 	pet_label.hide()
@@ -111,17 +113,16 @@ func flip_sprite() -> void:
 	match Math.randmod(10):
 		0:
 			anim_sprite.play("meow")
-			await Helpers.tree_timer(1.0)
+			await tree_timer(1.0).timeout
 			anim_sprite.play_backwards("walk")
 		2:
 			anim_sprite.play("meow")
-			await Helpers.tree_timer(1.0)
+			await tree_timer(1.0).timeout
 			anim_sprite.play("walk")
 			sleep_timer.start(1.0)
 		_:
 			anim_sprite.play("meow")
 			sleep_timer.start(0.25)
-
 
 func spawn_coin() -> void:
 	var catcoin: BigCatcoin = CATCOIN.instantiate()
@@ -176,10 +177,9 @@ func create_first_cat_for_free() -> void:
 
 
 func give_first_cat_a_cowboy_hat() -> void:
-	var hat: Hat = HAT_SCENE.instantiate()
 	meowboy_cat = CatData.cats.front()
-	hat.is_in_hand = false
-	meowboy_cat.add_hat(hat)
+	#hat.global_position = meowboy_cat.global_position
+	meowboy_cat.add_hat(HAT_SCENE)
 	meowboy_cat.is_cowboy = true
 
 

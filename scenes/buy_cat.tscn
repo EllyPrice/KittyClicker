@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d00kyep1e0rt8"]
+[gd_scene load_steps=7 format=3 uid="uid://d00kyep1e0rt8"]
 
 [ext_resource type="Script" path="res://scripts/buy_cat.gd" id="1_5si4c"]
-[ext_resource type="Texture2D" uid="uid://lx62erdx7p34" path="res://images/cats/bob.png" id="2_4ddlb"]
+[ext_resource type="Texture2D" uid="uid://lx62erdx7p34" path="res://images/cats/originals/bob.png" id="2_4ddlb"]
 [ext_resource type="PackedScene" uid="uid://pwngge8ttviq" path="res://scenes/floating_text.tscn" id="3_wan24"]
 [ext_resource type="Texture2D" uid="uid://bkf57disno6ye" path="res://images/catcoin/stackable_catcoin.png" id="4_lcthn"]
 [ext_resource type="LabelSettings" uid="uid://bipvhqgn1pls7" path="res://themes/smol_label_with_box.tres" id="5_3q7v3"]
+
+[sub_resource type="Shortcut" id="Shortcut_dl3gv"]
 
 [node name="Cat" type="HBoxContainer"]
 process_mode = 3
@@ -25,6 +27,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 focus_mode = 0
 action_mode = 0
+shortcut = SubResource("Shortcut_dl3gv")
 texture_normal = ExtResource("2_4ddlb")
 stretch_mode = 0
 

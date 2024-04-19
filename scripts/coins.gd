@@ -1,6 +1,6 @@
 extends Node
 
-var amount: float = 9999
+var amount: float = 999999
 
 func deposit(payout: float) -> void:
 	amount += payout

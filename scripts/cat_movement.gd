@@ -7,8 +7,9 @@ var dir: Vector2
 var my_id: int
 var is_lure_found: bool = false
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
-
+@onready var animated_sprite_2d: AnimatedSprite2D = $".."
+@onready var zoomba: Sprite2D = $"../Zoomba"
+@onready var zoomba_up: Sprite2D = $"../ZoombaUp"
 
 func _on_beat_listener_beat_received() -> void:
 	update()
@@ -23,15 +24,39 @@ func _on_beat_listener_assigned_beat_played() -> void:
 
 
 func animate() -> void:
-	animated_sprite_2d.stop()
-	animated_sprite_2d.animation = "meow"
-	animated_sprite_2d.frame = 0
-	await Helpers.tree_timer((0.234375)*2)
-	if is_moving:
-		animated_sprite_2d.play("walk")
-	else:
-		animated_sprite_2d.play("idle")
+	if Settings.are_animations_on:
+		if zoomba.visible or zoomba_up.visible:
+			zoomba.hide()
+			zoomba_up.hide()
+		animated_sprite_2d.stop()
+		animated_sprite_2d.animation = "meow"
+		animated_sprite_2d.frame = 0
+		await tree_timer((0.234375)*2).timeout
+		if is_moving:
+			if dir.y < 0:
+				animated_sprite_2d.play("walk_up")
+			else:
+				animated_sprite_2d.play("walk")
+		else:
+			if dir.y < 0:
+				animated_sprite_2d.play("idle_up")
+			else:
+				animated_sprite_2d.play("idle")
 
+	else:
+		if dir.y < 0:
+			animated_sprite_2d.animation = "idle_up"
+			animated_sprite_2d.frame = 0
+			zoomba_up.show()
+			zoomba.hide()
+		else:
+			zoomba.show()
+			zoomba_up.hide()
+			animated_sprite_2d.animation = "idle"
+			animated_sprite_2d.frame = 0
+
+func tree_timer(wait_time: float) -> SceneTreeTimer:
+	return get_tree().create_timer(wait_time)
 
 func update() -> void:
 	if dir.x < 0.0:
@@ -49,8 +74,7 @@ func update() -> void:
 			new_pos.y = snappedi(new_pos_y, 1)
 
 			parent.global_position = new_pos
-			await Helpers.tree_timer(0.234375)
-
+			await tree_timer(0.234375).timeout
 
 func pick_random_direction() -> void:
 	match Math.randmod(8):

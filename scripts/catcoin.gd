@@ -17,6 +17,7 @@ func _ready() -> void:
 	audio_stream_player_2d.play()
 	animate()
 
+
 func animate() -> void:
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", global_position + Vector2(0, -16), 0.46875)

@@ -1,14 +1,20 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://sji5528v3neh"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://sji5528v3neh"]
 
 [ext_resource type="Texture2D" uid="uid://3gt823u4ynhw" path="res://images/cats/salem/salem1.png" id="1_s4es1"]
 [ext_resource type="Texture2D" uid="uid://khgd8qv7ok2d" path="res://images/cats/salem/salem2.png" id="2_ru6bd"]
 [ext_resource type="Texture2D" uid="uid://behj6g4jcs8xl" path="res://images/cats/salem/salem3.png" id="3_agp4c"]
+[ext_resource type="Texture2D" uid="uid://dc7mw0lx6j8wa" path="res://images/cats/salem/salem10.png" id="3_e6jle"]
 [ext_resource type="Texture2D" uid="uid://w45k82b81vx8" path="res://images/cats/salem/salem4.png" id="4_wisok"]
 [ext_resource type="Texture2D" uid="uid://di4pet4cyieuv" path="res://images/cats/salem/salem5.png" id="5_xx6ec"]
 [ext_resource type="Texture2D" uid="uid://bpdlx615h7rfy" path="res://images/cats/salem/salem6.png" id="6_riqwb"]
 [ext_resource type="Texture2D" uid="uid://c8u52f7nnxtb2" path="res://images/cats/salem/salem7.png" id="7_n8gdq"]
 [ext_resource type="Texture2D" uid="uid://bvp6ulgxsydw1" path="res://images/cats/salem/salem8.png" id="8_pxgfk"]
 [ext_resource type="Texture2D" uid="uid://cv2rtl8h8c35b" path="res://images/cats/salem/salem9.png" id="9_c30ho"]
+[ext_resource type="Texture2D" uid="uid://cjkleysquwuhg" path="res://images/cats/salem/salem11.png" id="11_wj5ib"]
+[ext_resource type="Texture2D" uid="uid://d0f0t07b34gw3" path="res://images/cats/salem/salem12.png" id="12_meefk"]
+[ext_resource type="Texture2D" uid="uid://dowekbogyor2x" path="res://images/cats/salem/salem13.png" id="13_1uuvy"]
+[ext_resource type="Texture2D" uid="uid://bcbqq4c8sedn4" path="res://images/cats/salem/salem14.png" id="14_oual7"]
+[ext_resource type="Texture2D" uid="uid://mop1d21v7gpl" path="res://images/cats/salem/salem15.png" id="15_4nwyf"]
 
 [resource]
 animations = [{
@@ -21,6 +27,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
+"speed": 8.52
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e6jle")
+}],
+"loop": true,
+"name": &"idle_up",
 "speed": 8.52
 }, {
 "frames": [{
@@ -50,7 +64,30 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_c30ho")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
+"speed": 8.52
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wj5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_meefk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1uuvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wj5ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_oual7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4nwyf")
+}],
+"loop": true,
+"name": &"walk_up",
 "speed": 8.52
 }]

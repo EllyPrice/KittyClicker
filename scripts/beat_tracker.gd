@@ -18,4 +18,3 @@ func _on_timeout() -> void:
 		beat = 1
 	get_tree().call_group("beat_listeners", "_on_beat", beat, measures)
 	beat_calculated.emit()
-
